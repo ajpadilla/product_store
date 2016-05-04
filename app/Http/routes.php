@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts/main');
+    return view('layouts.partials._content');
 });
+
+Route::post('user/store',['as' => 'user.store', 'uses' => 'UserController@store']);
