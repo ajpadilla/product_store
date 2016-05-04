@@ -9,10 +9,11 @@
 				</a>
 			</li>
 			<li  data-toggle="collapse" data-target="#users" class="collapsed active">
-				<a href="#"><i class="fa fa-gift fa-lg"></i>Users<span class="arrow"></span></a>
+				<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i>Users<span class="arrow"></span></a>
 			</li>
 			<ul class="sub-menu collapse" id="users">
-				<li class=""><a href="{{ url('users/list') }}">Index</a></li>
+				<li class=""><a href="{{ url('user/list') }}">Index</a></li>
+				<li class=""><a href="{{ url('user/create') }}">Create</a></li>
 			</ul>
 
 			<li data-toggle="collapse" data-target="#service" class="collapsed">
