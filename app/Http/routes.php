@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('layouts.partials._content');
 });
 
+Route::get('user/create',['as' => 'user.create', 'uses' => 'UserController@create']);
 Route::post('user/store',['as' => 'user.store', 'uses' => 'UserController@store']);
