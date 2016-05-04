@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Store\User\UserRepository;
+use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -42,9 +44,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $this->repository->create($request->all());
+        return "Usuario agregado";
     }
 
     /**
