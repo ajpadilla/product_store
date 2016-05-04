@@ -7,10 +7,50 @@
 	{!! Form::open(['route' => 'user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files' => true, 'accept-charset' => 'UTF-8', 'enctype' => 'multipart/form-data']) !!}
 		{!! csrf_field() !!}
 		<div class="form-group">
-			{!! Form::label('first_name', 'First Name', ['class' => 'col-sm-2 control-label']) !!}
+			{!! Form::label('first_name', '', ['class' => 'col-sm-2 control-label']) !!}
 			<div class="col-sm-4">
-				{!! Form::text('first_name','First Name', ['class' => 'form-control']) !!}
+				{!! Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'Firs Name']) !!}
 			</div>
 		</div>
+		<div class="form-group">
+			{!! Form::label('last_name', '', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::text('last_name','', ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			{!! Form::label('email', '', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::email('email','', ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			{!! Form::label('username', '', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::text('username','', ['class' => 'form-control', 'placeholder' => 'User name']) !!}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('password', '', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::text('password','', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('confirm_password', '', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::text('confirm_password','', ['class' => 'form-control', 'placeholder' => 'Confirm password']) !!}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('photo', '', ['class' => 'col-sm-2 control-label']) !!}
+			<div class="col-sm-4">
+				{!! Form::file('photo','', ['class' => 'form-control', 'placeholder' => 'Photo']) !!}
+			</div>
+		</div>
+
 	{!! Form::close() !!}
 @endsection
