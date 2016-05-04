@@ -1,10 +1,9 @@
 <?php  
 	namespace App\Store\Base;
 	
-	protected $model;
-
 	class BaseRepository
 	{
+		protected $model;
 	  
 	    public function setModel($model)
 	    {
