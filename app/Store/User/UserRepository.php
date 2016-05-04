@@ -1,17 +1,15 @@
 <?php  
 	namespace App\Store\User;
 
-	/**
-	 * summary
-	 */
-	class UserRepository 
+	use App\Store\Base\BaseRepository;
+	use App\Store\User\User;
+
+	class UserRepository extends BaseRepository
 	{
-	    /**
-	     * summary
-	     */
+	   
 	    public function __construct()
 	    {
-	        
+	        $this->setModel(new User);
 	    }
 	}
 
