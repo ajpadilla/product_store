@@ -9,6 +9,13 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
