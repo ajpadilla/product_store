@@ -5,6 +5,7 @@
 @section('content')
 	<h1 class="page-header">Add new user</h1>
 	@include('layouts.partials._errors')
+	@include('layouts.partials._messages')
 	{!! Form::open(['route' => 'user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files' => true, 'accept-charset' => 'UTF-8', 'enctype' => 'multipart/form-data']) !!}
 		{!! csrf_field() !!}
 		<div class="form-group">
