@@ -8,11 +8,11 @@
 					<i class="fa fa-dashboard fa-lg"></i> Dashboard
 				</a>
 			</li>
-			<li  data-toggle="collapse" data-target="#products" class="collapsed active">
-				<a href="#"><i class="fa fa-gift fa-lg"></i>Products<span class="arrow"></span></a>
+			<li  data-toggle="collapse" data-target="#users" class="collapsed active">
+				<a href="#"><i class="fa fa-gift fa-lg"></i>Users<span class="arrow"></span></a>
 			</li>
-			<ul class="sub-menu collapse" id="products">
-				<li class=""><a href="{{ url('admin/products') }}">Index</a></li>
+			<ul class="sub-menu collapse" id="users">
+				<li class=""><a href="{{ url('users/list') }}">Index</a></li>
 			</ul>
 
 			<li data-toggle="collapse" data-target="#service" class="collapsed">
