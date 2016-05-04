@@ -34,14 +34,14 @@
 		<div class="form-group">
 			{!! Form::label('password', '', ['class' => 'col-sm-2 control-label']) !!}
 			<div class="col-sm-4">
-				{!! Form::text('password','', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+				{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
 			</div>
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('confirm_password', '', ['class' => 'col-sm-2 control-label']) !!}
+			{!! Form::label('password_confirmation', '', ['class' => 'col-sm-2 control-label']) !!}
 			<div class="col-sm-4">
-				{!! Form::text('confirm_password','', ['class' => 'form-control', 'placeholder' => 'Confirm password']) !!}
+				{!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm password']) !!}
 			</div>
 		</div>
 
@@ -50,6 +50,10 @@
 			<div class="col-sm-4">
 				{!! Form::file('photo','', ['class' => 'form-control', 'placeholder' => 'Photo']) !!}
 			</div>
+		</div>
+
+		<div class="form-group">
+			{!! Form::submit('Agregar!',['class' =>'btn btn-primary']) !!}
 		</div>
 
 	{!! Form::close() !!}
