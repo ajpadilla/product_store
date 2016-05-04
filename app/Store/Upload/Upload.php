@@ -30,6 +30,70 @@
 			$this->thumbnailWidth = $thumbnailWidth;
 			$this->thumbnailHeight = $thumbnailHeight;
 			$this->publicFilePath = $publicFilePath;
+			$this->uploadPath = $this->publicFilePath;
+		}
+
+		public function process()
+		{
+			$date = new DateTime();
+			$this->fileNameInDir = $this->fileName . '-' . $date->format('dmyhms') . '.' . $this->fileExtension;
+			//$this->file->move($this->uploadPath, $fileName);
+			$this->thumbnailFileNameInDir = 'thumb-' . $this->fileName . '-' . $date->format('dmyhms') . '(' . $this->thumbnailWidth . 'x' . $this->thumbnailHeight .').' . $this->fileExtension;
+			Image::make($this->file)->save($this->getUploadPath() . $this->fileNameInDir);
+			Image::make($this->getUploadPath() . $this->fileNameInDir)->resize($this->thumbnailWidth, $this->thumbnailHeight)->save($this->getUploadPath() . $this->thumbnailFileNameInDir);
+			return true;
+		}
+
+		public function getCompletePublicFilePath(){
+			return $this->publicFilePath . $this->fileNameInDir;
+		}
+
+		public function getCompleteThumbnailPublicFilePath(){
+			return $this->publicFilePath . $this->thumbnailFileNameInDir;
+		}
+
+		/**
+		 * @return UploadedFile
+		 */
+		public function getFile()
+		{
+			return $this->file;
+		}
+		
+		/**
+		 * @return string
+		 */
+		public function getFileExtension()
+		{
+			return $this->fileExtension;
+		}
+		/**
+		 * @return null|string
+		 */
+		public function getFileName()
+		{
+			return $this->fileName;
+		}
+		/**
+		 * @return string
+		 */
+		public function getUploadPath()
+		{
+			return $this->uploadPath;
+		}
+		/**
+		 * @return mixed
+		 */
+		public function getSize()
+		{
+			return $this->size;
+		}
+		/**
+		 * @return mixed
+		 */
+		public function getMimeType()
+		{
+			return $this->mimeType;
 		}
 	}
 ?>
