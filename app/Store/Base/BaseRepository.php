@@ -1,21 +1,11 @@
 <?php  
 	namespace App\Store\Base;
-	/**
-	 * summary
-	 */
 	
 	protected $model;
 
 	class BaseRepository
 	{
-	    /**
-	     * summary
-	     */
-	    public function __construct()
-	    {
-	        
-	    }
-
+	  
 	    public function setModel($model)
 	    {
 	    	$this->model = $model;
@@ -25,5 +15,12 @@
 		{
 			return $this->model;
 		}
+
+		public function create($data = array())
+		{
+			$model = $this->model->create($data); 
+			return $model;
+		}
+
 	}
 ?>
