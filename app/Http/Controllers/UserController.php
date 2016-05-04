@@ -47,7 +47,8 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $this->repository->create($request->all());
-        return "Usuario agregado";
+        \Alert::message('¡Usuario agregado con exito al sistema!', 'success');
+        return redirect()->route('user.create');
     }
 
     /**
