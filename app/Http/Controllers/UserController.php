@@ -8,14 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Store\User\UserRepository;
 use App\Http\Requests\StoreUserRequest;
+use App\Store\Upload\UserPhotoRepository;
 
 class UserController extends Controller
 {
     protected $repository;
+    protected $userPhotoRepository;
 
-    public function __construct(UserRepository $repository)
+    public function __construct(UserRepository $repository, UserPhotoRepository $userPhotoRepository)
     {
         $this->repository = $repository;
+        $this->userPhotoRepository = $userPhotoRepository;
     }
 
     /**
@@ -46,7 +49,8 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $this->repository->create($request->all());
+        $user = $this->repository->create($request->all());
+        $this->userPhotoRepository->register($request->file('photo'), $user->id);
         \Alert::message('¡Usuario agregado con exito al sistema!', 'success');
         return redirect()->route('user.create');
     }
