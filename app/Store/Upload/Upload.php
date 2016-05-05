@@ -37,7 +37,6 @@
 		{
 			$date = new DateTime();
 			$this->fileNameInDir = $this->fileName . '-' . $date->format('dmyhms') . '.' . $this->fileExtension;
-			//$this->file->move($this->uploadPath, $fileName);
 			$this->thumbnailFileNameInDir = 'thumb-' . $this->fileName . '-' . $date->format('dmyhms') . '(' . $this->thumbnailWidth . 'x' . $this->thumbnailHeight .').' . $this->fileExtension;
 			Image::make($this->file)->save($this->getUploadPath() . $this->fileNameInDir);
 			Image::make($this->getUploadPath() . $this->fileNameInDir)->resize($this->thumbnailWidth, $this->thumbnailHeight)->save($this->getUploadPath() . $this->thumbnailFileNameInDir);
