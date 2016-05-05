@@ -20,7 +20,7 @@
 		private $thumbnailWidth;
 		private $thumbnailHeight;
 		
-		function __construct(UploadedFile $file, $thumbnailWidth = 74, $thumbnailHeight = 103, $publicFilePath='')
+		function __construct(UploadedFile $file, $thumbnailWidth = 74, $thumbnailHeight = 103, $publicFilePath = '')
 		{
 			$this->file = $file;
 			$this->fileName = substr($file->getClientOriginalName(), 0, -4);
@@ -32,25 +32,22 @@
 			$this->publicFilePath = $publicFilePath;
 			$this->uploadPath = $this->publicFilePath;
 		}
-
-		public function process()
-		{
+		public function process(){
 			$date = new DateTime();
-			$this->fileNameInDir = $this->fileName . '-' . $date->format('dmyhms') . '.' . $this->fileExtension;
-			$this->thumbnailFileNameInDir = 'thumb-' . $this->fileName . '-' . $date->format('dmyhms') . '(' . $this->thumbnailWidth . 'x' . $this->thumbnailHeight .').' . $this->fileExtension;
+			$fileName = $this->fileName . '-' . $date->format('dmyhms') . '.' . $this->fileExtension;
+			$thumbnailFileName = 'thumb-' . $this->fileName . '-' . $date->format('dmyhms') . '(' . $this->thumbnailWidth . 'x' . $this->thumbnailHeight .').' . $this->fileExtension;
+			$this->fileNameInDir = $fileName;
+			$this->thumbnailFileNameInDir = $thumbnailFileName;
 			Image::make($this->file)->save($this->getUploadPath() . $this->fileNameInDir);
 			Image::make($this->getUploadPath() . $this->fileNameInDir)->resize($this->thumbnailWidth, $this->thumbnailHeight)->save($this->getUploadPath() . $this->thumbnailFileNameInDir);
 			return true;
 		}
-
 		public function getCompletePublicFilePath(){
 			return $this->publicFilePath . $this->fileNameInDir;
 		}
-
 		public function getCompleteThumbnailPublicFilePath(){
 			return $this->publicFilePath . $this->thumbnailFileNameInDir;
 		}
-
 		/**
 		 * @return UploadedFile
 		 */
@@ -58,7 +55,6 @@
 		{
 			return $this->file;
 		}
-		
 		/**
 		 * @return string
 		 */
@@ -77,6 +73,10 @@
 		 * @return string
 		 */
 		public function getUploadPath()
+		{
+			return $this->uploadPath;
+		}
+		public function getThumbnailUploadPath()
 		{
 			return $this->uploadPath;
 		}
