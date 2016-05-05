@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserPhoto extends Model
 {
-    protected $fillable = ['first_name','last_name','username', 'email', 'password'];
+    protected $fillable = ['filename','path','complete_path', 'complete_thumbnail_path', 'size', 'extension', 'mimetype', 'user_id'];
 
     public function user()
     {
