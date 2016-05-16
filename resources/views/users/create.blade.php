@@ -55,7 +55,9 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::submit('Agregar!',['class' =>'btn btn-primary']) !!}
+			<div class="col-sm-4 col-sm-offset-2">
+				{!! Form::submit('Agregar!',['class' =>'btn btn-primary']) !!}
+			</div>
 		</div>
 
 	{!! Form::close() !!}
