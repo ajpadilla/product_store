@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->text('address');
             $table->string('post_code', 5);
-            $table->integer('city_id')->index();
+            $table->integer('country_id')->index();
             $table->string('phone', 15);
             $table->boolean('active');
             $table->string('role', 64);
