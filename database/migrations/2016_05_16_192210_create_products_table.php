@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->decimal('price', 20, 6)->nullable();
             $table->tinyInteger('active');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });
     }
