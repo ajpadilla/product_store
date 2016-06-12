@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.content')
 
 @section('title', 'Add new user')
 
