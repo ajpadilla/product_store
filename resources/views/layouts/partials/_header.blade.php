@@ -14,7 +14,7 @@
 				<li><a href="#">Dashboard</a></li>
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
+				<li><a href="/auth/logout">Logout</a></li>
 			</ul>
 			<!--<div class="col-sm-6 col-md-6 col-lg-6 col-lg-push-2">
 				<form class="navbar-form" style="width:80%" role="search">
