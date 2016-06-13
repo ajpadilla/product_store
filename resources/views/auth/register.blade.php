@@ -8,10 +8,10 @@
 		@include('layouts.partials._errors')
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Login via site</h3>
+				<h3 class="panel-title">Registrar via site</h3>
 			</div>
 			<div class="panel-body">
-				{!! Form::open(['url' => 'auth/login', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'accept-charset' => 'UTF-8']) !!}
+				{!! Form::open(['url' => 'auth/register', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'accept-charset' => 'UTF-8']) !!}
 				{!! csrf_field() !!}
 				<fieldset>
 					<div class="form-group">
