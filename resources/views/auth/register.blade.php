@@ -38,7 +38,7 @@
 						{!! Form::text('post_code','', ['class' => 'form-control', 'placeholder' => 'Post Code']) !!}
 					</div>
 					<div class="form-group">
-						{!! Form::text('country_id','', ['class' => 'form-control', 'placeholder' => 'Country']) !!}
+						{!! Form::select('country_id', [], null, ['class' => 'form-control', 'placeholder' => 'Country', 'id' => 'countries_register']); !!}
 					</div>
 					<div class="form-group">
 						{!! Form::file('photo','', ['class' => 'form-control', 'placeholder' => 'Photo']) !!}
