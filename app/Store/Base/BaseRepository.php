@@ -21,5 +21,12 @@
 			return $model;
 		}
 
+		public function  getAll($exclude = null)
+		{
+			if($exclude)
+				return $this->getModel()->whereNotIn('id', $exclude)->get();
+			return $this->getModel()->all();
+		}	
+
 	}
 ?>
