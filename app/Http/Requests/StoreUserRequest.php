@@ -24,13 +24,16 @@ class StoreUserRequest extends Request
     public function rules()
     {
         return [
-            'first_name' => 'required|min:3|max:60',
-            'last_name' => 'required|min:3|max:60',
-            'email' => 'required|email|unique:users,email',
+            'first_name' => 'required|max:60',
+            'last_name' => 'required|max:60',
             'username' => 'required|unique:users,username|max:50',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|max:60|confirmed',
             'password_confirmation' => 'required|min:6|max:60',
-            'photo' => 'mimes:jpeg,jpg,png,gif|max:10000'
+            'address' => 'required|max:255',
+            'post_code' => 'required|max:5',
+            'country_id' => 'required|exists:countries,id',
+            'photo' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ];
     }
 }
