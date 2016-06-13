@@ -11,7 +11,7 @@
 	class CountryRepository extends BaseRepository
 	{
 		
-		public function __construct(argument)
+		public function __construct()
 		{
 			$this->setModel(new Country);
 		}
