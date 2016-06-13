@@ -11,13 +11,24 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/',['middleware' => 'auth' ,function () {
     return view('layouts.partials._content');
-});
+}]);
 
-Route::get('user/create',['as' => 'user.create', 'uses' => 'UserController@create']);
+Route::get('user/create',['as' => 'user.create', 'middleware' => 'auth','uses' => 'UserController@create']);
 Route::get('user/list',['as' => 'user.list', 'uses' => 'UserController@index']);
 Route::post('user/store',['as' => 'user.store', 'uses' => 'UserController@store']);
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
 Route::get('test', function ()
 {
 	dd(public_path().'\storage');
