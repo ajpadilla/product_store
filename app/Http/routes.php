@@ -29,6 +29,14 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
+/*
+********************************* route for model countries ********************************
+*/
+
+Route::get('api/select/countries', 'CountryController@getAllValues');
+
+
+
 Route::get('test', function ()
 {
 	dd(public_path().'\storage');
