@@ -11,26 +11,43 @@
 				<h3 class="panel-title">Registrar via site</h3>
 			</div>
 			<div class="panel-body">
-				{!! Form::open(['url' => 'auth/register', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'accept-charset' => 'UTF-8']) !!}
-				{!! csrf_field() !!}
-				<fieldset>
+				{!! Form::open(['route' => 'user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files' => true, 'accept-charset' => 'UTF-8', 'enctype' => 'multipart/form-data']) !!}
+					{!! csrf_field() !!}
+					<div class="form-group">
+						{!! Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'Firs Name']) !!}
+					</div>
+					<div class="form-group">
+						{!! Form::text('last_name','', ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
+					</div>
 					<div class="form-group">
 						{!! Form::email('email','', ['class' => 'form-control', 'placeholder' => 'Email']) !!}
 					</div>
 					<div class="form-group">
+						{!! Form::text('username','', ['class' => 'form-control', 'placeholder' => 'User name']) !!}
+					</div>
+					<div class="form-group">
 						{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
 					</div>
-					<div class="checkbox">
-						<label>
-							{!! Form::checkbox('remember', 'Remember Me') !!} Remember Me
-						</label>
+					<div class="form-group">
+						{!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm password']) !!}
 					</div>
-					{!! Form::submit('Login',['class' =>'btn btn-lg btn-success btn-block']) !!}
-				</fieldset>
+					<div class="form-group">
+						{!!  Form::textarea('address' , null , ['class' => 'form-control', 'placeholder' => 'Addres']) !!}
+					</div>
+					<div class="form-group">
+						{!! Form::text('post_code','', ['class' => 'form-control', 'placeholder' => 'Post Code']) !!}
+					</div>
+					<div class="form-group">
+						{!! Form::text('country_id','', ['class' => 'form-control', 'placeholder' => 'Country']) !!}
+					</div>
+					<div class="form-group">
+						{!! Form::file('photo','', ['class' => 'form-control', 'placeholder' => 'Photo']) !!}
+					</div>
+					{!! Form::submit('Registrar',['class' =>'btn btn-lg btn-success btn-block']) !!}
+					<div class="login-register">
+				    	<a href="index.php">Login</a>
+				    </div>
 				{!! Form::close() !!}
-				<hr/>
-				<center><h4>OR</h4></center>
-				{!! Form::submit('Login via facebook',['class' =>'btn btn-lg btn-facebook btn-block']) !!}
 			</div>
 		</div>
 	</div>
