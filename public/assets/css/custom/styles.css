@@ -330,3 +330,10 @@ div.dataTables_length label {
     .btn-facebook.active {
         background-color: #0d2456 \9 !important;
     }
+
+
+.login-register{
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+}
