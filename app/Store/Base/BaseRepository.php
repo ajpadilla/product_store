@@ -28,5 +28,10 @@
 			return $this->getModel()->all();
 		}	
 
+		public function getAllForSelect()
+		{
+			return $this->getAll()->lists('name', 'id');
+		}
+
 	}
 ?>
