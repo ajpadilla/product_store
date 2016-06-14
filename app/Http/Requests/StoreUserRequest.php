@@ -32,6 +32,7 @@ class StoreUserRequest extends Request
             'password_confirmation' => 'required|min:6|max:60',
             'address' => 'required|max:255',
             'post_code' => 'required|max:5',
+            'phone' => 'required',
             'country_id' => 'required|exists:countries,id',
             'photo' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ];
