@@ -11,6 +11,12 @@
 	    {
 	        $this->setModel(new User);
 	    }
+
+	    public function rol()
+	    {
+	    	$count = $this->getAll()->count();
+	    	return ($count > 0) ? 'client' : 'admin';
+	    }
 	}
 
 ?>
