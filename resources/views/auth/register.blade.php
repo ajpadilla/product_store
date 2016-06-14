@@ -39,6 +39,9 @@
 						{!! Form::text('post_code','', ['class' => 'form-control', 'placeholder' => 'Post Code']) !!}
 					</div>
 					<div class="form-group">
+						{!! Form::text('phone','', ['class' => 'form-control', 'placeholder' => 'Phone']) !!}
+					</div>
+					<div class="form-group">
 						{!! Form::select('country_id', [], null, ['class' => 'form-control', 'placeholder' => 'Country', 'id' => 'countries_register']); !!}
 					</div>
 					<div class="form-group">
