@@ -45,7 +45,7 @@
 					</div>
 					{!! Form::submit('Registrar',['class' =>'btn btn-lg btn-success btn-block']) !!}
 					<div class="login-register">
-				    	<a href="index.php">Login</a>
+				    	<a href="/auth/login">Login</a>
 				    </div>
 				{!! Form::close() !!}
 			</div>
