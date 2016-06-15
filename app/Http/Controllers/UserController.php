@@ -58,7 +58,7 @@ class UserController extends Controller
             $this->userPhotoRepository->register($request->file('photo'), $user->id);
 
         if($formData['active'] != 1)
-            Mail::send('users.email.active-user', array('user' => $user), function($message) use ($user) {
+            Mail::send('users.email.activate-user', array('user' => $user), function($message) use ($user) {
                 $message->to(env('MAIL_USERNAME'), env('MAIL_USERNAME'))
                         ->from($user->email, $user->name)
                         ->subject('A new user is registered!');
@@ -116,7 +116,7 @@ class UserController extends Controller
     {
         $user = $this->repository->get($id);
         if(!$this->repository->hasActive($user)){
-            Mail::send('users.email.active-user', array('user' => $user), function($message) use ($user) {
+            Mail::send('users.email.activate-user', array('user' => $user), function($message) use ($user) {
                 $message->to(env('MAIL_USERNAME'), env('MAIL_USERNAME'))
                         ->from($user->email, $user->name)
                         ->subject('A new user is registered!');
