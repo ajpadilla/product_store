@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/',['middleware' => 'auth' ,function () {
+Route::get('/',['middleware' => ['auth','active_user'] ,function () {
     return view('layouts.partials._content');
 }]);
 
