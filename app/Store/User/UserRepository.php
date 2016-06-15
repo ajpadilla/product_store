@@ -17,6 +17,11 @@
 	    	$count = $this->getAll()->count();
 	    	return ($count > 0) ? 'client' : 'admin';
 	    }
+
+	  	public function get($id)
+		{
+			return $this->model->findOrFail($id);
+		}
 	}
 
 ?>
