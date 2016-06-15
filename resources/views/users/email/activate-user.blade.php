@@ -9,6 +9,6 @@
 		<p><em>Country</em> <strong>{{ $user->country->name }}</strong></p>
 		<p><em>Address</em> <strong>{{ $user->address }}</strong></p>
 	</fieldset>
-	<h3>You can follow this link to activate the user: {!! link_to_route('activate_user_path', 'Enabled User', ['id', $user->id]) !!}</h3>
-	<p>or copy and paste the following link into your browser: {{ route('activate_user_path', ['id', $user->id]) }} </p>
+	<h3>You can follow this link to activate the user: {!! link_to_route('activate_user_path', 'Enabled User', ['id' => $user->id]) !!}</h3>
+	<p>or copy and paste the following link into your browser: {{ route('activate_user_path', ['id' => $user->id]) }} </p>
 </section>
