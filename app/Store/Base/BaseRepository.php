@@ -33,5 +33,10 @@
 			return $this->getAll()->lists('name', 'id');
 		}
 
+		public function get($id)
+		{
+			return $this->model->findOrFail($id);
+		}
+
 	}
 ?>
