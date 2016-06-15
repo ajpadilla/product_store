@@ -124,5 +124,6 @@ class UserController extends Controller
                         ->subject('Congratulations: We have admitted your income!');
             });
         }
+        return view('users.email.user-activate', compact('user'));
     }
 }
