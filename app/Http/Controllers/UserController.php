@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Store\User\UserRepository;
 use App\Http\Requests\StoreUserRequest;
 use App\Store\Upload\UserPhotoRepository;
+use Mail;
 
 class UserController extends Controller
 {
@@ -49,10 +50,21 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $user = $this->repository->create($request->all());
-        $this->userPhotoRepository->register($request->file('photo'), $user->id);
+        $formData = $request->all();
+        $formData['role'] = $this->repository->rol();
+        $formData['active'] = ($formData['role'] == 'admin' ? '1' : '0');
+        $user = $this->repository->create($formData);
+        if($request->file('photo'))
+            $this->userPhotoRepository->register($request->file('photo'), $user->id);
+
+        if($formData['active'] != 1)
+            Mail::send('users.email.active-user', array('user' => $user), function($message) use ($user) {
+                $message->to(env('MAIL_USERNAME'), env('MAIL_USERNAME'))
+                        ->from($user->email, $user->name)
+                        ->subject('A new user is registered!');
+            });
         \Alert::message('¡Usuario agregado con exito al sistema!', 'success');
-        return redirect()->route('user.create');
+        return redirect('auth/register');
     }
 
     /**
