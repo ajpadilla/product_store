@@ -119,9 +119,9 @@ class UserController extends Controller
             $user->active = 1;
             $user->save();
             Mail::send('users.email.user-activate', array('user' => $user), function($message) use ($user) {
-                $message->to(env('MAIL_USERNAME'), env('MAIL_USERNAME'))
-                        ->from($user->email, $user->name)
-                        ->subject('A new user is registered!');
+                $message->to($user->email, $user->username)
+                        ->from(env('MAIL_USERNAME'), env('MAIL_USERNAME'))
+                        ->subject('Congratulations: We have admitted your income!');
             });
         }
     }
