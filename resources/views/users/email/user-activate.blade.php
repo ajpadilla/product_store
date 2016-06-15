@@ -5,9 +5,9 @@
 	<fieldset>
 		<p><em>Name</em> <strong>{{ $user->username }}</strong></p>
 		<p><em>Email</em> <strong>{{ $user->email }}</strong></p>
-		<p><em>Post Code</em> <strong>{{ $user->codigo_postal }}</strong></p>
-		<p><em>Phone</em> <strong>{{ $user->telefono_fijo }}</strong></p>
-		<p><em>Country</em> <strong>{{ $user->provincia_id }}</strong></p>
-		<p><em>Address</em> <strong>{{ $user->direccion }}</strong></p>
+		<p><em>Post Code</em> <strong>{{ $user->post_code }}</strong></p>
+		<p><em>Phone</em> <strong>{{ $user->phone }}</strong></p>
+		<p><em>Country</em> <strong>{{ $user->country->name }}</strong></p>
+		<p><em>Address</em> <strong>{{ $user->address }}</strong></p>
 	</fieldset>
 </section>
