@@ -63,7 +63,7 @@ class UserController extends Controller
                         ->from($user->email, $user->name)
                         ->subject('A new user is registered!');
             });
-        \Alert::message('¡Usuario agregado con exito al sistema!', 'success');
+        \Alert::message('¡User successfully added to the system!', 'success');
         return redirect('auth/register');
     }
 
