@@ -116,7 +116,9 @@ class UserController extends Controller
     {
         $user = $this->repository->get($id);
         if(!$this->repository->hasActive($user)){
-            Mail::send('users.email.activate-user', array('user' => $user), function($message) use ($user) {
+            $user->active = 1;
+            $user->save();
+            Mail::send('users.email.user-activate', array('user' => $user), function($message) use ($user) {
                 $message->to(env('MAIL_USERNAME'), env('MAIL_USERNAME'))
                         ->from($user->email, $user->name)
                         ->subject('A new user is registered!');
