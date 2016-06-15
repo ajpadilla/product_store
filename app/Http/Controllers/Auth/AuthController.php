@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Store\User\User;
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -87,4 +88,19 @@ class AuthController extends Controller
             'role' => ,*/
         ]);
     }
+
+    /*protected function getCredentials(Request $request) 
+    {
+        $request['active'] = 1;
+        return $request->only($this->loginUsername(), 'password', 'active');
+    }*/
+
+    /*public function authenticate()
+    {
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])) {
+            // Authentication passed...
+            return redirect()->intended('/');
+        }
+    }*/
+
 }
