@@ -4,9 +4,9 @@
 
 @section('main-content')
 <div class="row">
+	@include('layouts.partials._messages')
 	<div class="col-md-4 col-md-offset-4">
 		@include('layouts.partials._errors')
-		@include('layouts.partials._messages')
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Registrar via site</h3>
