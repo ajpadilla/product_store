@@ -26,10 +26,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        $gate->define('chech-rol-user', function($user){
-            if($user->role == 'admin'){
-                return true;
-            }
-        });
+        //
     }
 }
