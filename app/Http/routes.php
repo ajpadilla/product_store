@@ -27,7 +27,17 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 ********************************* route for model products ********************************
 */
 
+/*
+	********************************* route for model classification ********************************
+*/
 
+	Route::get('classification/create', ['as' => 'classification.create', 
+		'uses' => 'ClassificationController@create']
+	);
+
+	Route::get('classification/store', ['as' => 'classification.store', 
+		'uses' => 'ClassificationController@store']
+	);
 
 });
 
@@ -46,6 +56,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
 Route::post('user/store',['as' => 'user.store', 'uses' => 'UserController@store']);
 Route::get('activate-user/{id}', ['as' => 'activate_user_path', 'uses' => 'UserController@activateUser'
 	]);
