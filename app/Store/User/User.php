@@ -45,4 +45,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->belongsTo('App\Store\Country\Country');
     }
+
+    public function isAdmin()
+    {
+        return $this->role == "admin";
+    }
 }
