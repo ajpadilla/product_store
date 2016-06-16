@@ -19,10 +19,9 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 
 	Route::get('user/create',['as' => 'user.create', 'middleware' => 'auth','uses' => 'UserController@create']);
 	Route::get('user/list',['as' => 'user.list', 'uses' => 'UserController@index']);
-	Route::post('user/store',['as' => 'user.store', 'uses' => 'UserController@store']);
 	Route::get('activate-user/{id}', ['as' => 'activate_user_path',
 		'uses' => 'UserController@activateUser'
-		]);
+	]);
 
 });
 
