@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Gate;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Store\User\UserRepository;
@@ -75,7 +76,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
