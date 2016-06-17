@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClassificationRequest;
 use App\Store\Classification\ClassificationRepository;
 
+
 class ClassificationController extends Controller
 {
 
@@ -26,7 +27,7 @@ class ClassificationController extends Controller
      */
     public function index()
     {
-        return 0;
+        return view('classifications.index');
     }
 
     /**
@@ -95,5 +96,10 @@ class ClassificationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataTable()
+    {
+        return $this->repository->table();
     }
 }
