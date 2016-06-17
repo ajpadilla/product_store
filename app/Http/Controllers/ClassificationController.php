@@ -47,7 +47,7 @@ class ClassificationController extends Controller
      */
     public function store(StoreClassificationRequest $request)
     {
-        
+        $this->repository->create($request->all());
     }
 
     /**
