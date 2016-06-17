@@ -17,15 +17,16 @@
 			</ul>
 
 			<li data-toggle="collapse" data-target="#service" class="collapsed">
-				<a href="#"><i class="fa fa-globe fa-lg"></i> Classification <span class="arrow"></span></a>
+				<a href="#"><i class="fa fa-plus-circle"></i> Classification <span class="arrow"></span></a>
 			</li>  
 			<ul class="sub-menu collapse" id="service">
-				<li><a href="{{ url('admin/classification') }}">Index</a></li>
+				<li><a href="{{ url('classification/list') }}">Index</a></li>
+				<li><a href="{{ url('classification/create') }}">Create</a></li>
 			</ul>
 
 
 			<li data-toggle="collapse" data-target="#new" class="collapsed">
-				<a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+				<a href="#"><i class="fa fa-plus-circle"></i> Product <span class="arrow"></span></a>
 			</li>
 			<ul class="sub-menu collapse" id="new">
 				<li>New New 1</li>
