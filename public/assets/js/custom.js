@@ -5,7 +5,7 @@ var loadCountriesInField= function() {
         url: '/api/select/countries',
         dataType:'json',
         success: function(response) {
-            console.log(response);
+            //console.log(response);
             if (response.success == true) {
                 jQuery('#countries_register').html('');
                 jQuery('#countries_register').append('<option value=\"\"></option>');
