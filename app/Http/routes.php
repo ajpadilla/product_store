@@ -39,6 +39,10 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ClassificationController@store']
 	);
 
+	Route::get('classification/list', ['as' => 'classification.list', 
+		'uses' => 'ClassificationController@index']
+	);
+
 });
 
 /*
