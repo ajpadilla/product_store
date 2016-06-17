@@ -72,7 +72,8 @@ class ClassificationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $classification = $this->repository->get($id);
+        return view('classifications.edit', compact('classification'));
     }
 
     /**
