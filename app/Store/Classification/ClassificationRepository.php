@@ -23,7 +23,7 @@
 			return Datatables::of($classifications)
 			->addColumn('action', function($classification){
 				return "<a  class='btn btn-primary' href='" . route('classification.edit', $classification->id) . "' id='ver_jugador'><i class='glyphicon glyphicon-edit'></i>Edit</a>
-					<a  class='btn btn-danger' href='" . route('classification.edit', $classification->id) . "' id='ver_jugador'><i class='glyphicon glyphicon-remove'></i>Delete</a>
+					<a  class='btn btn-danger' href='" . route('classification.delete', $classification->id) . "' id='ver_jugador'><i class='glyphicon glyphicon-remove'></i>Delete</a>
 				";
 			})
 			->make(true);
