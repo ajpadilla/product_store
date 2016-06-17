@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClassificationRequest;
-    use App\Store\Classification\Classification\ClassificationRepository;
+use App\Store\Classification\ClassificationRepository;
 
 class ClassificationController extends Controller
 {
@@ -48,6 +48,8 @@ class ClassificationController extends Controller
     public function store(StoreClassificationRequest $request)
     {
         $this->repository->create($request->all());
+        \Alert::message('¡Classification successfully added to the system!', 'success');
+        return redirect('classification/create');
     }
 
     /**
