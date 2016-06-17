@@ -11,7 +11,7 @@
 		<div class="form-group">
 			{!! Form::label('name', '', ['class' => 'col-sm-2 control-label']) !!}
 			<div class="col-sm-4">
-				{!! Form::text('name','', ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+				{!! Form::text('name',$classification->name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
 			</div>
 		</div>
 		<div class="form-group">
