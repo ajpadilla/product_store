@@ -16,7 +16,7 @@ class ClassificationController extends Controller
      */
     public function index()
     {
-        //
+        return 0;
     }
 
     /**
@@ -26,7 +26,7 @@ class ClassificationController extends Controller
      */
     public function create()
     {
-        //
+        return view('classifications.create');
     }
 
     /**
