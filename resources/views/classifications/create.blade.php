@@ -1,6 +1,6 @@
 @extends('layouts.content')
 
-@section('title', 'Add new user')
+@section('title', 'Add new classification')
 
 @section('content')
 	<h1 class="page-header">Add new classification for products</h1>
