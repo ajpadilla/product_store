@@ -61,7 +61,7 @@ class ClassificationController extends Controller
      */
     public function show($id)
     {
-        //
+        return vie();
     }
 
     /**
