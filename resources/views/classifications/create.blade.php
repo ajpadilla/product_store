@@ -3,7 +3,7 @@
 @section('title', 'Add new user')
 
 @section('content')
-	<h1 class="page-header">Add new user</h1>
+	<h1 class="page-header">Add new classification for products</h1>
 	@include('layouts.partials._errors')
 	@include('layouts.partials._messages')
 	{!! Form::open(['route' => 'classification.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST']) !!}
@@ -15,10 +15,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4 col-sm-offset-2">
+			<div class="col-sm-6 col-sm-offset-2">
 				{!! Form::submit('Add',['class' =>'btn btn-primary']) !!}
 			</div>
 		</div>
-
 	{!! Form::close() !!}
 @endsection
