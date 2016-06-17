@@ -35,13 +35,16 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ClassificationController@create']
 	);
 
-	Route::get('classification/store', ['as' => 'classification.store', 
+	Route::post('classification/store', ['as' => 'classification.store', 
 		'uses' => 'ClassificationController@store']
 	);
 
 	Route::get('classification/list', ['as' => 'classification.list', 
 		'uses' => 'ClassificationController@index']
 	);
+
+	Route::get('classification/datatables', ['as' => 'api.datatables.classification', 
+		'uses' => 'ClassificationController@dataTable']);
 
 });
 
