@@ -46,8 +46,8 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 	Route::get('classification/datatables', ['as' => 'api.datatables.classification', 
 		'uses' => 'ClassificationController@dataTable']);
 
-	Route::get('classification/show', ['as' => 'classification.show', 
-		'uses' => 'ClassificationController@show']);
+	Route::get('classification/edit/{id}', ['as' => 'classification.edit', 
+		'uses' => 'ClassificationController@edit']);
 
 });
 
