@@ -6,7 +6,7 @@
 	<h1 class="page-header">Edit classification for products</h1>
 	@include('layouts.partials._errors')
 	@include('layouts.partials._messages')
-	{!! Form::model($classification, ['route' => ['classification.update', $user->id]]) !!}
+	{!! Form::model($classification, ['route' => ['classification.update', $classification->id]]) !!}
 		{!! csrf_field() !!}
 		<div class="form-group">
 			{!! Form::label('name', '', ['class' => 'col-sm-2 control-label']) !!}
