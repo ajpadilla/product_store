@@ -11,6 +11,14 @@ use App\Http\Requests\StoreClassificationRequest;
 
 class ClassificationController extends Controller
 {
+
+    protected $repository;
+
+    public function __construct(ClassificationRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
