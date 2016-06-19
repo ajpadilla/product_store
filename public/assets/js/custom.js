@@ -31,7 +31,36 @@ var getAttributeIdActionSelect = function (id) {
 var deleteClassificationItem = function() {
     $(".table").delegate(".delete-classification", "click", function() {
         event.preventDefault();
-        console.log('Delete Classification');
+        action = getAttributeIdActionSelect($(this).attr('id'));
+        bootbox.confirm("Sure to remove the classification ?", function(result) {
+            if (result == true)
+            {
+                 $.ajax({
+                    type: 'GET',
+                    url: $('#eliminar-competencia').attr('href'),
+                    data: {'competitionId': idCompetition},
+                    dataType: "JSON",
+                    success: function(response) {
+                        if (response.success == true) {
+                            $('#eliminar_competencia_'+idCompetition).parent().parent().remove();
+                            bootbox.dialog({
+                                message:" ¡Removed classification!",
+                                title: "Success",
+                                buttons: {
+                                    success: {
+                                        label: "Success!",
+                                        className: "btn-success",
+                                        callback: function () {
+                                            reloadDatatable();
+                                        }
+                                    }
+                                }
+                            });
+                        };
+                    }
+                });
+            };
+        });
     });
 }
 
