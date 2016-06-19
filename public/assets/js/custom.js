@@ -28,6 +28,14 @@ var getAttributeIdActionSelect = function (id) {
     return action;
 }
 
+var reloadDatatable = function (table) {
+    var table = typeof table !== 'undefined' ? table : '#datatable';
+    if($(table).length) {
+        var table = $(table).DataTable();
+        table.search('').draw();
+    }
+}
+
 var deleteClassificationItem = function() {
     $(".table").delegate(".delete-classification", "click", function() {
         event.preventDefault();
@@ -37,12 +45,13 @@ var deleteClassificationItem = function() {
             {
                  $.ajax({
                     type: 'GET',
-                    url: $('#eliminar-competencia').attr('href'),
-                    data: {'competitionId': idCompetition},
+                    url: '/classification/delete/' + action.number,
+                    //data: {'competitionId': idCompetition},
                     dataType: "JSON",
                     success: function(response) {
+                        console.log(response);
                         if (response.success == true) {
-                            $('#eliminar_competencia_'+idCompetition).parent().parent().remove();
+                            $('#delete_classification_' + action.number).parent().parent().remove();
                             bootbox.dialog({
                                 message:" ¡Removed classification!",
                                 title: "Success",
@@ -51,7 +60,7 @@ var deleteClassificationItem = function() {
                                         label: "Success!",
                                         className: "btn-success",
                                         callback: function () {
-                                            reloadDatatable();
+                                            reloadDatatable('#classification-table');
                                         }
                                     }
                                 }
@@ -63,6 +72,7 @@ var deleteClassificationItem = function() {
         });
     });
 }
+
 
 
 jQuery(document).ready( function() 
