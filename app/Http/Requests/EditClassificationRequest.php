@@ -3,9 +3,15 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Illuminate\Routing\Route;
 
 class EditClassificationRequest extends Request
 {
+    protected $route;
+
+    public function __construct(Route $route) {
+        $this->route = $route;
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,7 +30,7 @@ class EditClassificationRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:1|max:60|unique:classifications,name'.$this->get('id')
+            'name' => 'required|min:1|max:60|unique:classifications,name,'.$this->route->getParameter('id')
         ];
     }
 }
