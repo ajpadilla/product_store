@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClassificationRequest;
 use App\Store\Classification\ClassificationRepository;
-
+use App\Http\Requests\EditClassificationRequest;
 
 class ClassificationController extends Controller
 {
@@ -83,9 +83,13 @@ class ClassificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditClassificationRequest $request, $id)
     {
-        //
+        $input = $request->all();
+        $input['classification_id'] = $id;
+        $classification = $this->repository->update($input);
+        \Alert::message('¡Classification successfully update to the system!', 'success');
+        return view('classifications.edit', compact('classification'));
     }
 
     /**
