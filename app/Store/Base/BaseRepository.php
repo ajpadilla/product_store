@@ -38,6 +38,12 @@
 			return $this->model->findOrFail($id);
 		}
 
+		public function delete($id)
+		{
+			$model = $this->get($id); 
+			return $model->delete();
+		}
+
 		public function update($data = array()){}
 
 	}
