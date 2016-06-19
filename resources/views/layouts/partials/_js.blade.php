@@ -2,5 +2,6 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript"  src="{{ URL::asset('assets/css/bootstrap-3.3.6-dist/js/bootstrap.min.js') }}"></script>
 @yield('scripts')
+{!! Html::script('assets/js/bootbox.min.js') !!}
 {!! Html::script('assets/js/custom.js') !!}
 
