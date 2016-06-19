@@ -29,8 +29,8 @@
 			$classifications = $this->getModel()->select(['id','name']);
 			return Datatables::of($classifications)
 			->addColumn('action', function($classification){
-				return "<a  class='btn btn-primary' href='" . route('classification.edit', $classification->id) . "' id='ver_jugador'><i class='glyphicon glyphicon-edit'></i>Edit</a>
-					<a  class='btn btn-danger' href='" . route('classification.delete', $classification->id) . "' id='ver_jugador'><i class='glyphicon glyphicon-remove'></i>Delete</a>
+				return "<a  class='btn btn-primary' href='" . route('classification.edit', $classification->id) . "'><i class='glyphicon glyphicon-edit'></i>Edit</a>
+					<a  class='btn btn-danger delete-classification' href='" . route('classification.delete', $classification->id) . "' id='delete_classification_".$classification->id."'><i class='glyphicon glyphicon-remove'></i>Delete</a>
 				";
 			})
 			->make(true);
