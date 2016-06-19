@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 	Route::get('classification/edit/{id}', ['as' => 'classification.edit', 
 		'uses' => 'ClassificationController@edit']);
 
-	Route::get('classification/update/{id}', ['as' => 'classification.update', 
+	Route::post('classification/update/{id}', ['as' => 'classification.update', 
 		'uses' => 'ClassificationController@update']);
 
 	Route::get('classification/delete/{id}', ['as' => 'classification.delete', 
