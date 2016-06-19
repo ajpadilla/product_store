@@ -16,6 +16,13 @@
 			$this->setModel(new Classification);
 		}
 
+		public function update($data = array())
+		{
+			$classification = $this->get($data['classification_id']);
+			$classification->update($data);
+			return $classification;
+		}
+
 
 		public function table()
 		{
