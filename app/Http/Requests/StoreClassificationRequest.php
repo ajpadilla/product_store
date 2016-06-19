@@ -24,7 +24,7 @@ class StoreClassificationRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:1 | max:60'
+            'name' => 'required|min:1|max:60'
         ];
     }
 }
