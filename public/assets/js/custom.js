@@ -20,7 +20,24 @@ var loadCountriesInField= function() {
     });
 }
 
+var getAttributeIdActionSelect = function (id) {
+    var action = new Object();
+    action.typeAction = id ? id.split('_')[0] : '';
+    action.view = id ? id.split('_')[1] : '';
+    action.number = id ? id.split('_')[2] : '';
+    return action;
+}
+
+var deleteClassificationItem = function() {
+    $(".table").delegate(".delete-classification", "click", function() {
+        event.preventDefault();
+        console.log('Delete Classification');
+    });
+}
+
+
 jQuery(document).ready( function() 
 {
 	loadCountriesInField();
+    deleteClassificationItem();
 });
