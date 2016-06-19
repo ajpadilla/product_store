@@ -38,5 +38,7 @@
 			return $this->model->findOrFail($id);
 		}
 
+		public function update($data = array()){}
+
 	}
 ?>
