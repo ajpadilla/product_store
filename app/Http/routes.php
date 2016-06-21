@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@create']
 	);
 
+	Route::get('api/select/classifications', 'ClassificationController@getAllValues');
+
 /*
 	********************************* route for model classification ********************************
 */
