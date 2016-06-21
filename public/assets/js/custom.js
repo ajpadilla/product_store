@@ -30,7 +30,7 @@ var loadClassificationsProductsInField = function() {
             if (response.success == true) {
                 jQuery('#classification_product').html('');
                 jQuery('#classification_product').append('<option value=\"\"></option>');
-                $.each(response.countries,function (k,v){
+                $.each(response.classifications,function (k,v){
                     jQuery('#classification_product').append('<option value=\"'+k+'\">'+v+'</option>');
                 });
             }else{
