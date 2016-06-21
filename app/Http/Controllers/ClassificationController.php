@@ -111,4 +111,15 @@ class ClassificationController extends Controller
     {
         return $this->repository->table();
     }
+
+    public function getAllValues(Request $request)
+    {
+        if($request->ajax())
+        {
+            $classifications = $this->repository->getAllForSelect();
+            $this->setSuccess($classifications ? true : false);
+            $this->addToResponseArray('classifications', $classifications);
+            return $this->getResponseArrayJson();
+        }
+    }
 }
