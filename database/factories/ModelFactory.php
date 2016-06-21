@@ -31,6 +31,11 @@ $factory->define(App\Store\User\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Store\Classification\Classification::class, function (Faker\Generator $faker) {
+    return [
+       'name' => $faker->word
+    ];
+});
 
 $factory->define(App\Store\Product\Product::class, function (Faker\Generator $faker) {
     return [
