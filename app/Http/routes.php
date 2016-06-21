@@ -27,6 +27,10 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 ********************************* route for model products ********************************
 */
 
+	Route::post('products/store',['as' => 'product.store', 
+		'uses' => 'ClassificationController@store']ç
+	);
+
 /*
 	********************************* route for model classification ********************************
 */
