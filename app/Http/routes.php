@@ -27,11 +27,11 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 ********************************* route for model products ********************************
 */
 
-	Route::post('products/store',['as' => 'product.store', 
+	Route::post('product/store',['as' => 'product.store', 
 		'uses' => 'ClassificationController@store']
 	);
 
-	Route::get('products/create', ['as' => 'product.create', 
+	Route::get('product/create', ['as' => 'product.create', 
 		'uses' => 'ClassificationController@create']
 	);
 
