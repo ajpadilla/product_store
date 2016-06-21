@@ -28,11 +28,11 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 */
 
 	Route::post('product/store',['as' => 'product.store', 
-		'uses' => 'ClassificationController@store']
+		'uses' => 'ProductController@store']
 	);
 
 	Route::get('product/create', ['as' => 'product.create', 
-		'uses' => 'ClassificationController@create']
+		'uses' => 'ProductController@create']
 	);
 
 /*
