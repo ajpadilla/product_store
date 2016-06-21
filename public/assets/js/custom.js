@@ -1,5 +1,5 @@
 
-var loadCountriesInField= function() {
+var loadCountriesInField = function() {
 	$.ajax({
         type: 'GET',
         url: '/api/select/countries',
@@ -15,6 +15,27 @@ var loadCountriesInField= function() {
             }else{
                 jQuery('#countries_register').html('');
                 jQuery('#countries_register').append('<option value=\"\"></option>');
+            }
+        }
+    });
+}
+
+var loadClassificationsProductsInField = function() {
+    $.ajax({ 
+        type: 'GET',
+        url: '/api/select/classifications',
+        dataType:'json',
+        success: function(response) {
+            //console.log(response);
+            if (response.success == true) {
+                jQuery('#classification_product').html('');
+                jQuery('#classification_product').append('<option value=\"\"></option>');
+                $.each(response.countries,function (k,v){
+                    jQuery('#classification_product').append('<option value=\"'+k+'\">'+v+'</option>');
+                });
+            }else{
+                jQuery('#classification_product').html('');
+                jQuery('#classification_product').append('<option value=\"\"></option>');
             }
         }
     });
@@ -79,4 +100,5 @@ jQuery(document).ready( function()
 {
 	loadCountriesInField();
     deleteClassificationItem();
+    loadClassificationsProductsInField();
 });
