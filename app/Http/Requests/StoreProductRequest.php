@@ -31,7 +31,6 @@ class StoreProductRequest extends Request
             'active' => 'required|boolean', 
             'mark' => 'required', 
             'classification_id' => 'required|exists:classifications,id', 
-            //'user_id' => 'required|exists:users,id'
         ];
     }
 }
