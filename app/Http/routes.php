@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@create']
 	);
 
-	Route::get('api/select/classifications', 'ClassificationController@getAllValues');
+	Route::get('add/photo/product', 'ProductController@createPhoto');
 
 /*
 	********************************* route for model classification ********************************
@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 
 	Route::get('classification/delete/{id}', ['as' => 'classification.delete', 
 		'uses' => 'ClassificationController@destroy']);
+
+	Route::get('api/select/classifications', 'ClassificationController@getAllValues');
 
 });
 
