@@ -46,7 +46,8 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        
+        $this->repository->create($request->all());
+
     }
 
     /**
@@ -92,5 +93,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createPhoto($productId)
+    {
+        $product = $this->repository->get($productId);
+        return view('products.photo', compact('product'));
     }
 }
