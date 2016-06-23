@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Store\Product\ProductRepository;
 
 class ProductController extends Controller
 {
+    protected $repository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this->repository = $productRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +46,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        dd($request->all());
+        
     }
 
     /**
