@@ -22,6 +22,7 @@ class CreateProductPhotosTable extends Migration
             $table->string('extension', 3);
             $table->string('mimetype', 32);
             $table->integer('product_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });
     }
