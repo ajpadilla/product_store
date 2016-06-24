@@ -16,6 +16,7 @@ class UserController extends Controller
     protected $repository;
     protected $userPhotoRepository;
 
+
     public function __construct(UserRepository $repository, UserPhotoRepository $userPhotoRepository)
     {
         $this->repository = $repository;
