@@ -17,4 +17,11 @@ class Product extends Model
 	{
 		return $this->hasMany('App\Store\Upload\ProductPhoto');
 	}
+
+	public function hasPhotos()
+	{
+		return $this->photos->count();
+	}
+
+	
 }
