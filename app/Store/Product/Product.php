@@ -23,5 +23,15 @@ class Product extends Model
 		return $this->photos->count();
 	}
 
-	
+	public function getFirstPhotoAttribute()
+	{
+		if ($this->hasPhotos()) {
+			foreach ($this->photos as $photo) {
+				return $photo;
+			}
+		}
+		return false;
+	}
+
+
 }
