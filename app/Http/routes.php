@@ -37,12 +37,14 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 
 	Route::get('product/list', ['as' => 'product.list', 
 		'uses' => 'ProductController@index']
-	)
+	);
+
+	Route::get('product/datatables', ['as' => 'api.datatables.product', 
+		'uses' => 'ProductController@dataTable']);
 
 	Route::get('create/photo/product/{productId}', ['as' => 'photoProduct.create', 
 		'uses' => 'ProductController@createPhoto'
 	]);
-
 
 	Route::post('add/photo/product', ['as' => 'photoProduct.store', 
 		'uses' => 'ProductController@storePhoto'
