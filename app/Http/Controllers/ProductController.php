@@ -8,14 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Store\Product\ProductRepository;
+use App\Store\Upload\ProductPhotoRepository;
 
 class ProductController extends Controller
 {
     protected $repository;
+    protected $productPhotoRepository;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository, ProductPhotoRepository $productPhotoRepository)
     {
         $this->repository = $productRepository;
+        $this->productPhotoRepository = $productPhotoRepository;
     }
 
     /**
@@ -46,8 +49,8 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $this->repository->create($request->all());
-
+        $product = $this->repository->create($request->all());
+        return redirect()->route('photoProduct.create', ['productId' => $product->id]);
     }
 
     /**
@@ -100,4 +103,15 @@ class ProductController extends Controller
         $product = $this->repository->get($productId);
         return view('products.photo', compact('product'));
     }
+
+    public function storePhoto(Request $request)
+    {
+        /*$this->setSuccess(true);
+        $this->addToResponseArray('request', $request);
+        return $this->getResponseArrayJson();*/
+        $this->productPhotoRepository->register($request->file('file'), $request->input('productId'), \Auth::user()->id);
+        return response()->json(['status' => 'success', 'file' => $request->file('file')], 200);
+    }
+
+
 }
