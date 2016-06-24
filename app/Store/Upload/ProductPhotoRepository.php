@@ -18,7 +18,7 @@ class ProductPhotoRepository extends BaseRepository
 
 	public function register(UploadedFile $file, $product_id, $user_id)
 	{
-		$this->upload = new Upload($file, 74, 103, public_path().'\storage\products\\');
+		$this->upload = new Upload($file, 74, 103, 'storage/products/');
 		$this->upload->process();
 		$data = array('complete_path' => $this->upload->getCompletePublicFilePath(),
 				'complete_thumbnail_path'=> $this->upload->getCompleteThumbnailPublicFilePath(),
