@@ -24,7 +24,7 @@ class StoreProductRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:50', 
+            'name' => 'required|max:50|unique:products,name', 
             'description' => 'required|max:256', 
             'quantity' => 'required|integer', 
             'price' => 'required|numeric', 
