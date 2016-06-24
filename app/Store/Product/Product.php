@@ -12,4 +12,9 @@ class Product extends Model
 	{
 		 return $this->belongsTo('App\Store\Classification\Classification');
 	}
+
+	public function photos()
+	{
+		return $this->hasMany('App\Store\Upload\ProductPhoto');
+	}
 }
