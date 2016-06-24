@@ -113,5 +113,9 @@ class ProductController extends Controller
         return response()->json(['status' => 'success', 'file' => $request->file('file')], 200);
     }
 
+    public function dataTable()
+    {
+        return $this->repository->table();
+    }
 
 }
