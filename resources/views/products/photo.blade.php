@@ -7,7 +7,7 @@
 	<div class="col-lg-12">
 		<div class="ibox float-e-margins">
 			<div class="ibox-title">
-				<h1 class="pagetitle nodesc"> Add photo to product </h1>
+				<h1 class="pagetitle nodesc"> Add photo to product {{ $product->name }}</h1>
 			</div>
 			<div class="ibox-content">
 				<div class="row">
@@ -80,6 +80,7 @@
 			</div>
 		</div>
 	</div>
+	{!! Form::hidden('csrf-token', csrf_token(), ['id' => 'csrf-token']) !!}
 @endsection
 
 @section('scripts')
@@ -113,11 +114,13 @@
 		});
 
 		myDropzone.on("sending", function(file, xhr, formData) {
-			formData.append('productId', '{{ $productId }}');
-		  // Show the total progress bar when upload starts
-		  document.querySelector("#total-progress").style.opacity = "1";
-		  // And disable the start button
-		  file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+			formData.append('productId', '{{ $product->id }}');
+			formData.append('_token', '{{ csrf_token() }}');
+		  	// Show the total progress bar when upload starts
+		  	document.querySelector("#total-progress").style.opacity = "1";
+		  	// And disable the start button
+		  	file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+		  	console.log(xhr);
 		});
 
 		// Hide the total progress bar when nothing's uploading anymore
