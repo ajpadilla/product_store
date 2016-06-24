@@ -29,6 +29,7 @@
 				<a href="#"><i class="fa fa-plus-circle"></i> Product <span class="arrow"></span></a>
 			</li>
 			<ul class="sub-menu collapse" id="new">
+				<li><a href="{{ url('product/list') }}">Index</a></li>
 				<li><a href="{{ url('product/create') }}">Create</a></li>
 			</ul>
 
