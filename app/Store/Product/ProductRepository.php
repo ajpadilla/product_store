@@ -22,6 +22,16 @@
 			->addColumn('classification', function($product){
 				return $product->classification->name;
 			})
+			->addColumn('photo', function($product){
+				$img = '';
+				$photo = $product->first_photo;
+				if ($photo != false) {
+					$img .= "	<a href='#'>
+					<img class='mini-photo' alt='" . $photo->filename . "' src='" . asset($photo->complete_thumbnail_path) . "'>
+					</a>";
+				}
+				return $img;
+			})
 			->addColumn('action', function($product){
 				return "<a  class='btn btn-primary' href='" . route('classification.edit', $product->id) . "'><i class='glyphicon glyphicon-edit'></i>Edit</a>
 					<a  class='btn btn-danger delete-products' href='" . route('classification.delete', $product->id) . "' id='delete_products_".$product->id."'><i class='glyphicon glyphicon-remove'></i>Delete</a>
