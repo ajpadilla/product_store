@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@create']
 	);
 
+	Route::get('product/list', ['as' => 'product.list', 
+		'uses' => 'ProductController@index']
+	)
+
 	Route::get('create/photo/product/{productId}', ['as' => 'photoProduct.create', 
 		'uses' => 'ProductController@createPhoto'
 	]);
