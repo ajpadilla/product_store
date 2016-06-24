@@ -49,7 +49,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = $this->repository->create($request->all());
+        $input = $request->all();
+        $input['user_id'] = \Auth::user()->id;
+        $product = $this->repository->create($input);
         return redirect()->route('photoProduct.create', ['productId' => $product->id]);
     }
 
@@ -106,10 +108,8 @@ class ProductController extends Controller
 
     public function storePhoto(Request $request)
     {
-        /*$this->setSuccess(true);
-        $this->addToResponseArray('request', $request);
-        return $this->getResponseArrayJson();*/
-        $this->productPhotoRepository->register($request->file('file'), $request->input('productId'), \Auth::user()->id);
+        $this->productPhotoRepository->register($request->file('file'), $request->input('productId'), 
+            \Auth::user()->id);
         return response()->json(['status' => 'success', 'file' => $request->file('file')], 200);
     }
 
