@@ -35,7 +35,14 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@create']
 	);
 
-	Route::get('add/photo/product', 'ProductController@createPhoto');
+	Route::get('create/photo/product/{productId}', ['as' => 'photoProduct.create', 
+		'uses' => 'ProductController@createPhoto'
+	]);
+
+
+	Route::post('add/photo/product', ['as' => 'photoProduct.store', 
+		'uses' => 'ProductController@storePhoto'
+	]);
 
 /*
 	********************************* route for model classification ********************************
