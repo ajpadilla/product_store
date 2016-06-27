@@ -66,6 +66,17 @@ class ProductController extends Controller
         //
     }
 
+    public function showApi(Request $request, $id)
+    {
+         if($request->ajax())
+         {
+            $product = $this->repository->get($id);
+            $this->setSuccess($product ? true : false);
+            $this->addToResponseArray('product', $product);
+            return $this->getResponseArrayJson();
+         }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
