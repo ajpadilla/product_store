@@ -100,6 +100,17 @@ var showProductForm = function() {
         event.preventDefault();
         action = getAttributeIdActionSelect($(this).attr('id'));
         console.log(action);
+        $.ajax({
+            type: 'GET',
+            url: '/api/show/info/product/' + action.number,
+            //data: {'competitionId': idCompetition},
+            dataType: "JSON",
+            success: function(response) 
+            {
+                console.log(response);
+            }
+        });
+
         bootbox.dialog({
             message: $('#show-product-form-div'),
             show: false // We will show it manually later
