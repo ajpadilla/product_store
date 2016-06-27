@@ -95,10 +95,35 @@ var deleteClassificationItem = function() {
 }
 
 
+var showProductForm = function() {
+    $('.table').delegate(".show-product","click",function() {
+        event.preventDefault();
+        action = getAttributeIdActionSelect($(this).attr('id'));
+        console.log(action);
+        bootbox.dialog({
+            message: $('#show-product-form-div'),
+            show: false // We will show it manually later
+        })
+        .on('shown.bs.modal', function() {
+            $('#show-product-form-div')
+                .show();    // Show the form
+        })
+        .on('hide.bs.modal', function(e) {
+            // Bootbox will remove the modal (including the body which contains the form)
+            // after hiding the modal
+            // Therefor, we need to backup the form
+
+            $('#show-product-form-div').hide().appendTo('#show-product-form');
+        })
+        .modal('show');
+    });
+}
+
 
 jQuery(document).ready( function() 
 {
 	loadCountriesInField();
     deleteClassificationItem();
     loadClassificationsProductsInField();
+    showProductForm();
 });
