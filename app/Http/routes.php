@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@storePhoto'
 	]);
 
+	Route::get('api/show/info/product/{productId}', 'ProductController@showApi');
+
 /*
 	********************************* route for model classification ********************************
 */
