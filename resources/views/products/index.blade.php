@@ -20,6 +20,8 @@
     </table>
 @endsection
 
+@include('products.show')
+
 @section('scripts')
 	<script type="text/javascript">
 		$(function(){
