@@ -138,7 +138,11 @@ class ProductController extends Controller
             {
                 foreach ($product->photos as $photo) 
                 {
-                    $this->productPhotoRepository->remove($photo->complete_path, $photo->complete_thumbnail_path, $photo->id);
+                    $this->productPhotoRepository->remove(
+                        $photo->complete_path, 
+                        $photo->complete_thumbnail_path, 
+                        $photo->id
+                    );
                 }
             }
             $this->setSuccess($this->repository->delete($id));
