@@ -33,13 +33,13 @@
 				return $img;
 			})
 			->addColumn('action', function($product){
-				return "<a  class='btn btn-primary' href='" . route('classification.edit', $product->id) . "'>
+				return "<a  class='btn btn-primary' href='" . route('product.edit', $product->id) . "'>
 							<i class='glyphicon glyphicon-edit'></i>Edit
 						</a><br/>
 						<a  class='btn btn-info show-product' href='#' id='show_product_".$product->id."'>
 							<i class='glyphicon glyphicon-zoom-in'></i>Show
 						</a><br/>
-						<a  class='btn btn-danger delete-products' href='" . route('classification.delete', $product->id) . "' id='delete_products_".$product->id."'>
+						<a  class='btn btn-danger delete-products' href='' id='delete_products_".$product->id."'>
 							<i class='glyphicon glyphicon-remove'></i>Delete
 						</a><br/>
 						<a  class='btn btn-primary' href='" . route('photoProduct.create', $product->id) . "'>
