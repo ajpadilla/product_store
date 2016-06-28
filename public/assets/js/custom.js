@@ -161,7 +161,8 @@ var deleteProductItem = function() {
                     dataType: "JSON",
                     success: function(response) {
                         console.log(response);
-                        if (response.success == true) {
+                        if (response.success) 
+                        {
                             $('#delete_products_' + action.number).parent().parent().remove();
                             bootbox.dialog({
                                 message:" ¡Removed product!",
