@@ -33,5 +33,10 @@ class Product extends Model
 		return false;
 	}
 
+	public function getActiveAttribute($value)
+	{
+		return ($value ? 'Yes' : 'No');
+	}
+
 
 }
