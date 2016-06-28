@@ -21,6 +21,7 @@
 @endsection
 
 @include('products.show')
+@include('products.partials._form_show-tpl')
 
 @section('scripts')
 	<script type="text/javascript">
