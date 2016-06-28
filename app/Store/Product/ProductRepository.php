@@ -17,7 +17,7 @@
 
 		public function table()
 		{
-			$products = $this->getModel()->select(['id','name','description','quantity', 'price', 'mark', 'classification_id']);
+			$products = $this->getModel()->select(['id','name','description','quantity', 'price', 'active','mark', 'classification_id']);
 			return Datatables::of($products)
 			->addColumn('classification', function($product){
 				return $product->classification->name;
