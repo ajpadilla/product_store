@@ -13,6 +13,7 @@
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Mark</th>
+                <th>Active</th>
                 <th>Classification</th>
                 <th>Actions</th>
             </tr>
@@ -37,6 +38,7 @@
 		            {data: 'quantity', name: 'quantity' },
 		            {data: 'price', name: 'price' },
 		            {data: 'mark', name: 'mark' },
+		            {data: 'active', name: 'active' },
 		            {data: 'classification', name: 'classification', orderable: false, searchable: false },
 		            {data: 'action', name: 'action', orderable: false, searchable: false}
 		        ]
