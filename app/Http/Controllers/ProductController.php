@@ -68,13 +68,30 @@ class ProductController extends Controller
 
     public function showApi(Request $request, $id)
     {
-         if($request->ajax())
-         {
+        $urlPhotos = [];
+        $urlFirtsPhoto = null;
+        $photosSlice = null;
+        $classification = null;
+        if($request->ajax())
+        {
             $product = $this->repository->get($id);
+            $photos = $product->photos->toArray();
+            $classification = $product->classification->name;
+            if($product->hasPhotos())
+            {
+                $urlFirtsPhoto = $product->first_photo->complete_path;
+            }
+            if($product->hasPhotos() > 1)
+            {
+                $photosSlice = array_slice($photos, 1);
+            }
             $this->setSuccess($product ? true : false);
             $this->addToResponseArray('product', $product);
+            $this->addToResponseArray('urlFirtsPhoto', $urlFirtsPhoto);
+            $this->addToResponseArray('photos', $photosSlice);
+            $this->addToResponseArray('classification', $classification);
             return $this->getResponseArrayJson();
-         }
+        }
     }
 
     /**
