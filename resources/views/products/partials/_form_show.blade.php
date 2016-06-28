@@ -1,6 +1,6 @@
 <div id="show-product-form-div">
-	<div class="container-fluid">
-		<div class="content-wrapper" id="show-infon-product">	
+	<div class="container-fluid" id="show-infon-product">
+		<div class="content-wrapper">	
 			<div class="item-container">	
 				<div class="container">	
 					<div class="col-md-12">
