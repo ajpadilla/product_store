@@ -102,7 +102,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->repository->get($id);
+        return view('product.edit', compact('product'));
     }
 
     /**
