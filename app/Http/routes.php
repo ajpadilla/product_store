@@ -35,6 +35,9 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@create']
 	);
 
+	Route::get('product/edit/{id}', ['as' => 'product.edit', 
+		'uses' => 'ProductController@edit']);
+
 	Route::get('product/list', ['as' => 'product.list', 
 		'uses' => 'ProductController@index']
 	);
