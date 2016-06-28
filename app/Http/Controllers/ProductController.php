@@ -128,6 +128,24 @@ class ProductController extends Controller
         //
     }
 
+    public function destroyApi(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $product = $this->repository->get($id);
+
+            if ($product->hasPhotos()) 
+            {
+                foreach ($product->photos as $photo) 
+                {
+                    $this->productPhotoRepository->remove($photo->complete_path, $photo->complete_thumbnail_path, $photo->id);
+                }
+            }
+            $this->setSuccess($this->repository->delete($id));
+            return $this->getResponseArrayJson();
+        }
+    }
+
     public function createPhoto($productId)
     {
         $product = $this->repository->get($productId);
