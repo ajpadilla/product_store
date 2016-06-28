@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 
 	Route::get('api/show/info/product/{productId}', 'ProductController@showApi');
 
+	Route::get('api/delete/product/{productId}', 'ProductController@destroyApi');
+
 /*
 	********************************* route for model classification ********************************
 */
