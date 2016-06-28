@@ -146,10 +146,49 @@ var showProductForm = function() {
 }
 
 
+var deleteProductItem = function() {
+    $('.table').delegate(".delete-products","click",function() {
+        event.preventDefault();
+        action = getAttributeIdActionSelect($(this).attr('id'));
+        console.log(action);
+        bootbox.confirm("Sure to remove the product ?", function(result) {
+            if (result == true)
+            {
+                 $.ajax({
+                    type: 'GET',
+                    url: '/api/delete/product/' + action.number,
+                    //data: {'competitionId': idCompetition},
+                    dataType: "JSON",
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success == true) {
+                            $('#delete_products_' + action.number).parent().parent().remove();
+                            bootbox.dialog({
+                                message:" ¡Removed product!",
+                                title: "Success",
+                                buttons: {
+                                    success: {
+                                        label: "Success!",
+                                        className: "btn-success",
+                                        callback: function () {
+                                            reloadDatatable('#products-table');
+                                        }
+                                    }
+                                }
+                            });
+                        };
+                    }
+                });
+            };
+        });
+    });
+}
+
 jQuery(document).ready( function() 
 {
 	loadCountriesInField();
     deleteClassificationItem();
     loadClassificationsProductsInField();
     showProductForm();
+    deleteProductItem();
 });
