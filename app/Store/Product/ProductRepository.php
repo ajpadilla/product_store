@@ -50,6 +50,12 @@
 			->make(true);
 		}
 
-	}
+		public function update($data = array())
+		{
+			$product = $this->get($data['product_id']);
+			$product->update($data);
+			return $product;
+		}
 
+	}
 ?>
