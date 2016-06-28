@@ -41,6 +41,9 @@
 						</a><br/>
 						<a  class='btn btn-danger delete-products' href='" . route('classification.delete', $product->id) . "' id='delete_products_".$product->id."'>
 							<i class='glyphicon glyphicon-remove'></i>Delete
+						</a><br/>
+						<a  class='btn btn-primary' href='" . route('photoProduct.create', $product->id) . "'>
+							<i class='glyphicon glyphicon-camera'></i>Add Photo
 						</a>
 				";
 			})
