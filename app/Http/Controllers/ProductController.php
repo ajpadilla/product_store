@@ -9,16 +9,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Store\Product\ProductRepository;
 use App\Store\Upload\ProductPhotoRepository;
+use App\Store\Classification\ClassificationRepository;
 
 class ProductController extends Controller
 {
     protected $repository;
     protected $productPhotoRepository;
+    protected $classificationRepository;
 
-    public function __construct(ProductRepository $productRepository, ProductPhotoRepository $productPhotoRepository)
+    public function __construct(ProductRepository $productRepository, ProductPhotoRepository $productPhotoRepository, ClassificationRepository $classificationRepository)
     {
         $this->repository = $productRepository;
         $this->productPhotoRepository = $productPhotoRepository;
+        $this->classificationRepository = $classificationRepository;
     }
 
     /**
@@ -103,7 +106,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = $this->repository->get($id);
-        return view('product.edit', compact('product'));
+        $classifications = 
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -115,7 +119,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $input['product_id'] = $id;
+        $input['user_id'] = \Auth::user()->id;
+        $product = $this->repository->update($input);
     }
 
     /**
