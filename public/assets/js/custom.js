@@ -99,7 +99,7 @@ var showProductForm = function() {
     $('.table').delegate(".show-product","click",function() {
         event.preventDefault();
         action = getAttributeIdActionSelect($(this).attr('id'));
-        console.log(action);
+        //console.log(action);
         $.ajax({
             type: 'GET',
             url: '/api/show/info/product/' + action.number,
@@ -107,7 +107,22 @@ var showProductForm = function() {
             dataType: "JSON",
             success: function(response) 
             {
-                console.log(response);
+                //console.log(response);
+                var product = $('#show-infon-product');
+                var data = {
+                    urlFirtsPhoto: response.urlFirtsPhoto,
+                    photos: response.photos,
+                    name: response.product.name,
+                    price: response.product.price,
+                    description: response.product.description,
+                    quantity: response.product.quantity,
+                    mark: response.product.mark,
+                    classification: response.classification
+                };
+                var template = $('#show-infon-product-tpl').html();
+                //console.log(template);
+                var html = Mustache.to_html(template, data);
+                product.html(html);
             }
         });
 
