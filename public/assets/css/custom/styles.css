@@ -444,8 +444,8 @@ div.dataTables_length label {
 }
 
 .service1-item > img {
-  max-height: 110px;
-  max-width: 110px;
+  max-height: 100%;
+  max-width: 100%;
   opacity: 0.6;
   transition: all .2s ease-in;
   -o-transition: all .2s ease-in;
@@ -467,5 +467,6 @@ div.dataTables_length label {
 }
 
 .service-image-left > center > img,.service-image-right > center > img{
-  max-height: 155px;
+  max-height: 100%;
+  max-width: 100%;
 }
