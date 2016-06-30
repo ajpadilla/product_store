@@ -56,6 +56,15 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@editPhoto'
 	]);
 
+	Route::get('api/list/photo/product/{productId}', ['as' => 'photoProduct.list', 
+		'uses' => 'ProductController@listPhoto'
+	]);
+
+	Route::get('delete/photo/product/{photoId}', ['as' => 'photoProduct.delete', 
+		'uses' => 'ProductController@deletePhoto'
+	]);
+
+
 	Route::post('add/photo/product', ['as' => 'photoProduct.store', 
 		'uses' => 'ProductController@storePhoto'
 	]);
