@@ -84,4 +84,93 @@
 @endsection
 
 @section('scripts')
+	<script type="text/javascript">
+		var previewNode = document.querySelector("#template");
+		previewNode.id = "";
+		var previewTemplate = previewNode.parentNode.innerHTML;
+		previewNode.parentNode.removeChild(previewNode);
+
+		var myDropzone = new Dropzone(document.body, {
+			init: function(){
+				thisDropzone = this;
+				$.ajax({
+			        type: 'GET',
+			        url: '/api/list/photo/product/' + '{{ $product->id }}',
+			        dataType:'json',
+			        success: function(response) {
+			            //console.log(response);
+			            if (response.success) 
+			            {
+			              	$.each(response.photos, function(index, val) {
+    							//console.log(val);
+    							var mockFile = { id: val.id, filename: val.filename, size: val.size };
+    							thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+    							thisDropzone.options.thumbnail.call(
+    								thisDropzone, 
+    								mockFile, 
+    								"/" + val.complete_path
+    							);
+  							});
+			            }
+			        }
+			    });
+			},
+			url: "{{ route('photoProduct.store') }}",
+			thumbnailWidth: 80,
+            thumbnailHeight: 80,
+			addRemoveLinks: true,
+			maxFilesize: 2,
+			acceptedFiles: "image/*",
+			previewTemplate: previewTemplate,
+			autoQueue: false,
+			previewsContainer: "#previews",
+			clickable: '.fileinput-button'
+        });
+
+        myDropzone.on("addedfile", function(file) {
+		  // Hookup the start button
+		  file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+		});
+
+		// Update the total progress bar
+		myDropzone.on("totaluploadprogress", function(progress) {
+		  document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+		});
+
+		myDropzone.on("sending", function(file, xhr, formData) {
+			formData.append('productId', '{{ $product->id }}');
+			formData.append('_token', '{{ csrf_token() }}');
+		  	// Show the total progress bar when upload starts
+		  	document.querySelector("#total-progress").style.opacity = "1";
+		  	// And disable the start button
+		  	file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+		});
+
+		// Hide the total progress bar when nothing's uploading anymore
+		myDropzone.on("queuecomplete", function(progress) {
+		  document.querySelector("#total-progress").style.opacity = "0";
+		});
+
+		myDropzone.on("removedfile", function(file) {
+			console.log(file);
+			$.ajax({
+				type: 'GET',
+			 	url: '/delete/photo/product/' + file.id,
+			    dataType:'json',
+			    success: function(response) {
+			   		console.log(response);
+			    }
+			});
+		});
+
+		// Setup the buttons for all transfers
+		// The "add files" button doesn't need to be setup because the config
+		// `clickable` has already been specified.
+		document.querySelector("#actions .start").onclick = function() {
+		  myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+		};
+		document.querySelector("#actions .cancel").onclick = function() {
+		  myDropzone.removeAllFiles(true);
+		};
+	</script>
 @stop
