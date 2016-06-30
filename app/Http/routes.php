@@ -52,6 +52,10 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@createPhoto'
 	]);
 
+	Route::get('edit/photo/product/{productId}', ['as' => 'photoProduct.edit', 
+		'uses' => 'ProductController@editPhoto'
+	]);
+
 	Route::post('add/photo/product', ['as' => 'photoProduct.store', 
 		'uses' => 'ProductController@storePhoto'
 	]);
