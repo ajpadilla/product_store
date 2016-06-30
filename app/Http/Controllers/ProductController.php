@@ -106,8 +106,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = $this->repository->get($id);
-        $classifications = 
-        return view('products.edit', compact('product'));
+        $classifications = $this->classificationRepository->getAllForSelect();
+        return view('products.edit', compact('product', 'classifications'));
     }
 
     /**
