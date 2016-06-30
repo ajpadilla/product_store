@@ -164,6 +164,12 @@ class ProductController extends Controller
         return view('products.photo', compact('product'));
     }
 
+    public function editPhoto($productId)
+    {
+        $product = $this->repository->get($productId);
+        return view('products.edit-photo', compact('product'));
+    }
+
     public function storePhoto(Request $request)
     {
         $this->productPhotoRepository->register($request->file('file'), $request->input('productId'), 
