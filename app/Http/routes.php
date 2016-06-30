@@ -64,7 +64,6 @@ Route::group(['middleware' => ['auth','active_user'] ], function(){
 		'uses' => 'ProductController@deletePhoto'
 	]);
 
-
 	Route::post('add/photo/product', ['as' => 'photoProduct.store', 
 		'uses' => 'ProductController@storePhoto'
 	]);
