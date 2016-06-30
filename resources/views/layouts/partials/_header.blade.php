@@ -11,6 +11,35 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<i class="fa fa-shopping-cart fa-lg"></i>
+						<span id="cart-count" class="label label-warning">
+							0
+						</span>
+					</a>
+					<ul id="products-cart" class="dropdown-menu dropdown-alerts">
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<i class="fa fa-check-square-o fa-lg"></i>
+						<span id="wishlist-count" class="label label-primary">
+							0
+						</span>
+					</a>
+					<ul id="products-wishlist" class="dropdown-menu dropdown-alerts">
+						<li class="divider"></li>
+						<li>
+							<div class="text-center link-block">
+								<a href="http://tienda-online.local/en/wistlist/api/wistlist">
+									<strong>Más Detalles</strong>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</li>
 				<li><a href="#">Dashboard</a></li>
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
