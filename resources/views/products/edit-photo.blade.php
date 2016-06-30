@@ -108,7 +108,7 @@
     							thisDropzone.options.thumbnail.call(
     								thisDropzone, 
     								mockFile, 
-    								"/" + val.complete_path
+    								"/" + val.complete_thumbnail_path
     							);
   							});
 			            }
