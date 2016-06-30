@@ -123,6 +123,7 @@ class ProductController extends Controller
         $input['product_id'] = $id;
         $input['user_id'] = \Auth::user()->id;
         $product = $this->repository->update($input);
+        return redirect()->route('photoProduct.edit', ['productId' => $product->id]);
     }
 
     /**
