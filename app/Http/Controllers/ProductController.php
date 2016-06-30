@@ -170,6 +170,30 @@ class ProductController extends Controller
         return view('products.edit-photo', compact('product'));
     }
 
+    public function listPhoto($productId)
+    {
+        $product = $this->repository->get($productId);
+        if($product->hasPhotos())
+        {
+            $photos = $product->photos->toArray();
+            $this->setSuccess(true);
+            $this->addToResponseArray('photos', $photos);
+        }
+        return $this->getResponseArrayJson();
+    }
+
+    public function deletePhoto($photoId)
+    {
+        $photo = $this->productPhotoRepository->get($photoId);
+        $this->productPhotoRepository->remove(
+            $photo->complete_path,
+            $photo->complete_thumbnail_path,
+            $photo->id
+        );
+        $this->setSuccess(true);
+        return $this->getResponseArrayJson();
+    }
+
     public function storePhoto(Request $request)
     {
         $this->productPhotoRepository->register($request->file('file'), $request->input('productId'), 
