@@ -70,7 +70,7 @@
 				<li><a href="#">Dashboard</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-				<li><a href="#">{{ \Auth::user()->username }}</a></li>
+				<li><a href="#">{{\Auth::user()->username}}</a></li>
 			</ul>
 			@else 	
 			<ul class="nav navbar-nav navbar-right">
