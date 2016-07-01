@@ -8,7 +8,7 @@
 					<i class="fa fa-dashboard fa-lg"></i> Dashboard
 				</a>
 			</li>
-			@if (\Auth::user()->role == 'admin')
+			@if (\Auth::user()->isAdmin())
 			<li  data-toggle="collapse" data-target="#users" class="collapsed active">
 				<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i>Users<span class="arrow"></span></a>
 			</li>
