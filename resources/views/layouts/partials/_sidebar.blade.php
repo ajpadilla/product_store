@@ -8,6 +8,7 @@
 					<i class="fa fa-dashboard fa-lg"></i> Dashboard
 				</a>
 			</li>
+			@if (\Auth::user()->role == 'admin')
 			<li  data-toggle="collapse" data-target="#users" class="collapsed active">
 				<a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i>Users<span class="arrow"></span></a>
 			</li>
@@ -24,7 +25,6 @@
 				<li><a href="{{ url('classification/create') }}">Create</a></li>
 			</ul>
 
-
 			<li data-toggle="collapse" data-target="#new" class="collapsed">
 				<a href="#"><i class="fa fa-plus-circle"></i> Product <span class="arrow"></span></a>
 			</li>
@@ -32,6 +32,7 @@
 				<li><a href="{{ url('product/list') }}">Index</a></li>
 				<li><a href="{{ url('product/create') }}">Create</a></li>
 			</ul>
+			@endif
 		</ul>
 	</div>
 </div>
