@@ -21,7 +21,7 @@ class ConfirmAdmin
 
     public function handle($request, Closure $next)
     {
-         if($this->auth->check() && $this->auth->user()->active && $this->auth->user()->role != 'admin'){
+         if($this->auth->check() && $this->auth->user()->active && !$this->auth->user()->isAdmin()){
             $this->auth->logout();
             return redirect('auth/login')->withErrors('sorry, this account is only for admin users');
         }
