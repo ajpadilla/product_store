@@ -10,6 +10,7 @@
 			<a class="navbar-brand" href="#">Brand</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
+			@if (\Auth::check())
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -68,9 +69,15 @@
 				</li>
 				<li><a href="#">Dashboard</a></li>
 				<li><a href="#">Profile</a></li>
-				<li><a href="/auth/logout">Logout</a></li>
+				<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 				<li><a href="#">{{ \Auth::user()->username }}</a></li>
 			</ul>
+			@else 	
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="{{ url('/auth/login') }}">Login</a></li>
+			</ul>
+			@endif
+			
 			<!--<div class="col-sm-6 col-md-6 col-lg-6 col-lg-push-2">
 				<form class="navbar-form" style="width:80%" role="search">
 					<div style="display:table;" class="input-group">
