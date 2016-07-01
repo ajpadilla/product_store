@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/',['middleware' => ['auth','active_user'] ,function () {
+Route::get('/',['middleware' => [] ,function () {
+    return view('public.index');
+}]);
+
+Route::get('/dashboard',['middleware' => ['auth','active_user'] ,function () {
     return view('layouts.partials._content');
 }]);
 
