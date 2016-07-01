@@ -15,7 +15,7 @@ Route::get('/',['middleware' => ['auth','active_user'] ,function () {
     return view('layouts.partials._content');
 }]);
 
-Route::group(['middleware' => ['auth','active_user'] ], function(){
+Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 
 /*
 	********************************* route for model users ********************************
