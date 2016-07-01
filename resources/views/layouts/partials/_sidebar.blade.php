@@ -32,18 +32,6 @@
 				<li><a href="{{ url('product/list') }}">Index</a></li>
 				<li><a href="{{ url('product/create') }}">Create</a></li>
 			</ul>
-
-			<li>
-				<a href="#">
-					<i class="fa fa-user fa-lg"></i> Profile
-				</a>
-			</li>
-
-			<li>
-				<a href="#">
-					<i class="fa fa-users fa-lg"></i> Users
-				</a>
-			</li>
 		</ul>
 	</div>
 </div>
