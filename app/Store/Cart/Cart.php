@@ -11,7 +11,7 @@ class Cart extends Model
 
 	public function user()
 	{
-		 $this->belongsTo('App\Store\User\User');
+		return $this->belongsTo('App\Store\User\User');
 	}
 
 }
