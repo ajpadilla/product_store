@@ -36,7 +36,7 @@
 					<div class="product-stock">{{ quantity }} In Stock</div>
 					<hr>
 					<div class="btn-group cart">
-						<button type="button" class="btn btn-success">
+						<button type="button" class="add_cart btn btn-success" href="/api/create/cart/user/{{ id }}">
 							Add to cart 
 						</button>
 					</div>
