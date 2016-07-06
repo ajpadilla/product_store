@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
 	        'active' => '1',
 	        'role' => 'admin',
 	        'email' => 'ajpadilla88@gmail.com',
-	        'password' => '123456',
+	        'password' => bcrypt('123456'),
 	        'remember_token' => str_random(10),
     	]);
         factory(User::class, 10)->create();
