@@ -50,4 +50,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->role == "admin";
     }
+
+    public function carts()
+    {
+        return $this->hasMany('App\Store\Cart\Cart');
+    }
 }
