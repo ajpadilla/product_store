@@ -13,7 +13,7 @@
 
 
 $factory->define(App\Store\User\User::class, function (Faker\Generator $faker) {
-	$roles = ['admin', 'user'];
+	$roles = ['admin', 'client'];
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
@@ -24,7 +24,7 @@ $factory->define(App\Store\User\User::class, function (Faker\Generator $faker) {
         'phone' => $faker->phoneNumber ,
         'active' => rand(0, 1),
         //'role' =>  $roles[array_rand($roles, 1)],  
-        'role' => 'user',
+        'role' => 'client',
         'email' => $faker->safeEmail,
         'password' => '123456',
         'remember_token' => str_random(10),
