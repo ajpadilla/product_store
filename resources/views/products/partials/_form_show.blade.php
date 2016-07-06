@@ -33,7 +33,7 @@
 						<div class="product-stock">In Stock</div>
 						<hr>
 						<div class="btn-group cart">
-							<button type="button" class="btn btn-success">
+							<button type="button" class="add_cart btn btn-success">
 								Add to cart 
 							</button>
 						</div>
