@@ -3,6 +3,7 @@
 
 	use App\Store\Base\BaseRepository;
 	use App\Store\Product\Product;
+	use App\Store\User\User;
 	use Yajra\Datatables\Datatables;
 	/**
 	* 
@@ -55,6 +56,15 @@
 			$product = $this->get($data['product_id']);
 			$product->update($data);
 			return $product;
+		}
+
+		public function existsInUserCart($productId, User $user)
+		{
+			return $this->getModel()->where('id','=', $productId)->whereHas('carts', function($q) use ($user){
+				$q
+					->where('user_id', '=', $user->id)
+					->where('active','=', TRUE);
+			})->count();
 		}
 
 	}
