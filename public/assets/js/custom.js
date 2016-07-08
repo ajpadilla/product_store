@@ -112,6 +112,7 @@ var showProductForm = function() {
                 var data = {
                     urlFirtsPhoto: response.urlFirtsPhoto,
                     photos: response.photos,
+                    id: response.product.id,
                     name: response.product.name,
                     price: response.product.price,
                     description: response.product.description,
@@ -150,7 +151,7 @@ var deleteProductItem = function() {
     $('.table').delegate(".delete-products","click",function() {
         event.preventDefault();
         action = getAttributeIdActionSelect($(this).attr('id'));
-        console.log(action);
+        //console.log(action);
         bootbox.confirm("Sure to remove the product ?", function(result) {
             if (result == true)
             {
@@ -185,6 +186,22 @@ var deleteProductItem = function() {
     });
 }
 
+var createCartProductToUser = function() {
+    $(document.body).on("click", "[class^=add_cart]", function(event)
+    {
+        var url = jQuery(this).attr('href');
+        console.log(url);
+         jQuery.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            success: function(response) {
+              
+            }
+        });
+    });
+}
+
 jQuery(document).ready( function() 
 {
 	loadCountriesInField();
@@ -192,4 +209,5 @@ jQuery(document).ready( function()
     loadClassificationsProductsInField();
     showProductForm();
     deleteProductItem();
+    createCartProductToUser();
 });
