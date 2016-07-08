@@ -41,7 +41,7 @@ class Product extends Model
 	public function carts()
 	{
 		$this->belongsToMany('App\Store\Cart\Cart','cart_product', 'product_id' ,'cart_id')
-			->withPivot('quantity')->whithTimestamps();
+			->withPivot('quantity')->withTimestamps();
 	}
 
 }
