@@ -4,16 +4,18 @@
 	use App\Store\Base\BaseRepository;
 	use App\Store\Product\Product;
 	use App\Store\User\User;
+	use App\Store\Cart\CartRepository;
 	use Yajra\Datatables\Datatables;
 	/**
 	* 
 	*/
 	class ProductRepository extends BaseRepository
 	{
-		
+		private $cartRepository;
 		public function __construct()
 		{
 			$this->setModel(new Product);
+			$this->cartRepository = new CartRepository();
 		}
 
 		public function table()
@@ -60,11 +62,21 @@
 
 		public function existsInUserCart($productId, User $user)
 		{
-			return $this->getModel()->where('id','=', $productId)->whereHas('carts', function($q) use ($user){
-				$q
-					->where('user_id', '=', $user->id)
-					->where('active','=', TRUE);
+			return $this->getModel()->where('id', '=', $productId)->whereHas('carts', function($q) use ($user)
+			{
+    			$q
+			    	->where('user_id', '=', $user->id)
+			    	->where('active', '=', TRUE);
+
 			})->count();
+		}
+
+		public function addToUserCart($productId, $quantity, User $user)
+		{
+			if($this->existsInUserCart($productId, $user))
+				return FALSE;
+			$cart = $this->cartRepository->getActiveCartForUser($user);
+			return $cart->products()->attach($productId, ['quantity' => $quantity]) == NULL;
 		}
 
 	}
