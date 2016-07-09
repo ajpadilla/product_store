@@ -11,12 +11,12 @@ use App\Store\Product\ProductRepository;
 
 class CartController extends Controller
 {
-    protected $cartRepository;
+    protected $repository;
     protected $productRepository;
 
-    public function __construct(CartRepository $cartRepository, ProductRepository $productRepository)
+    public function __construct(CartRepository $repository, ProductRepository $productRepository)
     {
-        $this->cartRepository = $cartRepository;
+        $this->repository = $repository;
         $this->productRepository = $productRepository;
     }
 
@@ -50,11 +50,16 @@ class CartController extends Controller
     {
         //if ($request->ajax()) 
         //{
-            if (!$this->cartRepository->getActiveCartForUser(\Auth::user())) 
+            if (!$this->repository->getActiveCartForUser(\Auth::user())) 
             {
                 $input['active'] = TRUE;
-                $this->cartRepository->create($input);
+                $this->repository->create($input);
             }
+
+            if ($this->productRepository->addToUserCart($productId, $quantity, \Auth::user())) {
+                $this->setSuccess(true);
+            }
+            return $this->getResponseArrayJson();
        // }
     }
 
@@ -102,4 +107,5 @@ class CartController extends Controller
     {
         //
     }
+
 }
