@@ -25,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-         return view('layouts.partials._content');
+        $currentUser = \Auth::user();
+        $currentCartUser = $this->cartRepository->getActiveCartForUser($currentUser);
+        return view('layouts.partials._content', compact('currentCartUser'));
     }
 
     /**
