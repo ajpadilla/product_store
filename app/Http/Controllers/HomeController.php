@@ -10,6 +10,14 @@ use App\Store\Cart\CartRepository;
 
 class HomeController extends Controller
 {
+
+    protected $cartRepository;
+
+    public function __construct(CartRepository $cartRepository)
+    {
+        $this->cartRepository = $cartRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
