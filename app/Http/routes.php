@@ -15,14 +15,16 @@ Route::get('/',['middleware' => [] ,function () {
     return view('public.index');
 }]);
 
-Route::get('/dashboard',['middleware' => ['auth','active_user'] , 
-	'uses' => 'HomeController@index']
-);
 
 
 // Middleware for user client
 Route::group(['middleware' => ['auth','active_user'] ],function()
 {
+	/*
+		********************************* route for HomePage ********************************
+	*/
+	Route::get('/dashboard',['uses' => 'HomeController@index']);
+
 	/*
 		********************************* route for model carts ********************************
 	*/
