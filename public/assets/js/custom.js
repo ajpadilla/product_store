@@ -190,13 +190,35 @@ var createCartProductToUser = function() {
     $(document.body).on("click", "[class^=add_cart]", function(event)
     {
         var url = jQuery(this).attr('href');
-        console.log(url);
-         jQuery.ajax({
+        jQuery.ajax({
             type: 'GET',
             url: url,
             dataType: 'json',
             success: function(response) {
-              
+                if (response.success) 
+                {
+                    bootbox.dialog({
+                        message:" ¡Product added to your shopping cart!",
+                        title: "Success",
+                        buttons: {
+                            success: {
+                                label: "Success!",
+                                className: "btn-success"
+                            }
+                        }
+                    });
+                }else{
+                    bootbox.dialog({
+                        message:" ¡Could not add the product to the shopping cart!",
+                        title: "Danger",
+                        buttons: {
+                            success: {
+                                label: "Danger!",
+                                className: "btn-danger"
+                            }
+                        }
+                    });
+                }
             }
         });
     });
