@@ -25,4 +25,13 @@ class Cart extends Model
 		return $this->products->count();
 	}
 
+	public function getTotalAttribute()
+	{
+		$total = 0;
+		foreach ($this->products as $product) {
+			$total += $product->price * $product->pivot->quantity;
+		}
+		return $total;
+	}
+
 }
