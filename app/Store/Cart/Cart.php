@@ -28,9 +28,8 @@ class Cart extends Model
 	public function getTotalAttribute()
 	{
 		$total = 0;
-		foreach ($this->products as $product) {
+		foreach ($this->products as $product)
 			$total += $product->price * $product->pivot->quantity;
-		}
 		return $total;
 	}
 
