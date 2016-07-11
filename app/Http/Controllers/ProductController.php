@@ -70,7 +70,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->repository->get($id);
+        return view('products.show-info', compact('product'));
     }
 
     public function showApi(Request $request, $id)
