@@ -32,5 +32,13 @@
 					->first();
 		}
 
+		public function getProductQuantityForUser(User $user, $productId)
+		{
+			$cart = $this->getActiveCartForUser($user);
+			$product = $cart->products()->whereProductId($productId)->first();
+			$quantity = $product->pivot->quantity;
+			return $quantity;
+		}
+
 	}
 ?>
