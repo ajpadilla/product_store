@@ -48,8 +48,8 @@ class CartController extends Controller
      */
     public function store(Request $request, $productId, $quantity = 1)
     {
-        //if ($request->ajax()) 
-        //{
+        if ($request->ajax()) 
+        {
             if (!$this->repository->getActiveCartForUser(\Auth::user())) 
             {
                 $input['active'] = TRUE;
@@ -57,10 +57,13 @@ class CartController extends Controller
             }
 
             if ($this->productRepository->addToUserCart($productId, $quantity, \Auth::user())) {
+                $product = $this->productRepository->getArrayForTopCart(\Auth::user(), $productId);
                 $this->setSuccess(true);
+                $this->addToResponseArray('product', $product);
             }
             return $this->getResponseArrayJson();
-       // }
+       }
+        return $this->getResponseArrayJson();
     }
 
     /**
