@@ -15,15 +15,15 @@ Route::get('/',['middleware' => [] ,function () {
     return view('public.index');
 }]);
 
+Route::get('/dashboard',['middleware' => ['auth','active_user'] ,function () {
+    return view('layouts.partials._content');
+}]);
 
-
-// Middleware for user client
 Route::group(['middleware' => ['auth','active_user'] ],function()
-{
-	/*
-		********************************* route for HomePage ********************************
-	*/
-	Route::get('/dashboard',['uses' => 'HomeController@index']);
+{	
+	Route::get('/dashboard', function () {
+    	return view('layouts.partials._content');
+	});
 
 	/*
 		********************************* route for model carts ********************************
@@ -32,8 +32,6 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 	Route::get('api/create/cart/user/{productId}/{quantity?}', ['as' => 'cart.store', 'uses' => 'CartController@store']);
 });
 
-
-// Middleware for user admin
 Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 
 /*
@@ -41,7 +39,6 @@ Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 */
 	Route::get('user/create',['as' => 'user.create','uses' => 'UserController@create']);
 	Route::get('user/list',['as' => 'user.list', 'uses' => 'UserController@index']);
-
 
 /*
 ********************************* route for model products ********************************
