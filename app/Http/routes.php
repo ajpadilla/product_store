@@ -34,6 +34,11 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 
 	Route::get('show/cart/{id}', ['as' => 'cart.show', 'uses' => 'CartController@show']);
 
+	Route::get('cart/change/quantity/{productId}/{quantity}', [
+		'as' => 'cart.change-quantity',
+		'uses' => 'CartController@changeQuantity'
+	]);
+
 	/*
 		********************************* route for model products ********************************
 	*/
