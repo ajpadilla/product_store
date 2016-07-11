@@ -10,18 +10,22 @@ use App\Http\Requests\StoreProductRequest;
 use App\Store\Product\ProductRepository;
 use App\Store\Upload\ProductPhotoRepository;
 use App\Store\Classification\ClassificationRepository;
+use App\Store\Cart\CartRepository;
 
 class ProductController extends Controller
 {
     protected $repository;
     protected $productPhotoRepository;
     protected $classificationRepository;
+    protected $cartRepository;
 
-    public function __construct(ProductRepository $productRepository, ProductPhotoRepository $productPhotoRepository, ClassificationRepository $classificationRepository)
+    public function __construct(ProductRepository $productRepository, ProductPhotoRepository $productPhotoRepository, ClassificationRepository $classificationRepository, 
+        CartRepository $cartRepository)
     {
         $this->repository = $productRepository;
         $this->productPhotoRepository = $productPhotoRepository;
         $this->classificationRepository = $classificationRepository;
+        $this->cartRepository = $cartRepository;
     }
 
     /**
