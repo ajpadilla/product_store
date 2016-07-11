@@ -6,6 +6,8 @@
 	use App\Store\User\User;
 	use App\Store\Cart\CartRepository;
 	use Yajra\Datatables\Datatables;
+	use App\Store\Cart\CartRepository;
+
 	/**
 	* 
 	*/
