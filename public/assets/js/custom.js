@@ -197,6 +197,13 @@ var createCartProductToUser = function() {
             success: function(response) {
                 if (response.success) 
                 {
+                    var cart = jQuery('#products-cart');
+                    var product = response.product;
+                    var template = jQuery('#cart-tpl').html();
+                    var html = Mustache.to_html(template, product);
+                    cart.prepend(html);
+                    addCountTocart();
+                    
                     bootbox.dialog({
                         message:" ¡Product added to your shopping cart!",
                         title: "Success",
