@@ -44,4 +44,13 @@ class Product extends Model
 			->withPivot('quantity')->withTimestamps();
 	}
 
+	public function getTotalAttribute()
+	{
+		$total = 0;
+		foreach ($this->products as $product) {
+			$total += $product->price * $product->pivot->quantity;
+		}
+		return $total;
+	}
+
 }
