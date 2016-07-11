@@ -74,7 +74,8 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+        $cart = $this->repository->getActiveCartForUser(\Auth::user());
+        return view('carts.show', compact('cart'));
     }
 
     /**
@@ -109,6 +110,16 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeQuantity(Request $request, $productId, $quantity)
+    {
+        if($request->ajax()) 
+        {
+            $this->success($this->repository->changeQuantity(\Auth::user(), $productId, $quantity));
+            return $this->getResponseArrayJson();
+        }
+        return $this->getResponseArrayJson();
     }
 
 }
