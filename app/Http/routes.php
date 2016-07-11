@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 		********************************* route for model products ********************************
 	*/
 
-	Route::get('show/product/{id}', ['as' => 'show.product', 'uses' => 'ProductController@show']);
+	Route::get('show/product/{id}', ['as' => 'product.show', 'uses' => 'ProductController@show']);
 
 });
 
