@@ -638,20 +638,38 @@ div.dataTables_length label {
 }
 .goods-page .btn-default {
   float: left;
-  border: 1px solid #5ea8dc;
+  /*border: 1px solid #5ea8dc;
   background: #5ea8dc;
-  color: #fff;
+  color: #fff;*/
 }
 .goods-page .btn-primary {
   float: right;
   margin-right: 10px;
 }
-.btn-primary {
+/*.btn-primary {
   background: #1ab394;
 }
 .btn-primary .btn-outline {
   color: #d9534f;
-}
+}*/
 .btn {
   text-transform: uppercase;
+}
+
+.goods-data .del-goods, .goods-data .add-goods {
+    margin-top: 4px;
+}
+
+.del-goods, .add-goods {
+    width: 25px;
+    height: 25px;
+    color: #fff !important;
+    border-radius: 22px !important;
+    float: right;
+    margin: 10px 0 0 5px;
+    line-height: 1;
+    font-size: 16px;
+}
+.del-goods {
+    background: #a94442 url("../icons/del-goods.png") no-repeat 50% 50%;
 }
