@@ -222,7 +222,18 @@ class ProductController extends Controller
 
     public function showApiForCart(Request $request, $id)
     {
-        $product = $this->repository->get($id);
+        if ($request->ajax()) 
+        {
+            $product = $this->repository->get($id);
+            $this->setSuccess(true);
+            $this->addToResponseArray('name', $product->name);
+            $this->addToResponseArray('quantity', $this->cartRepository
+                ->getProductQuantityForUser(\Auth::user(), $id));
+            $this->addToResponseArray('url', '');
+            $this->addToResponseArray('url-delete', '');
+            $this->getResponseArrayJson();
+        }    
+        $this->getResponseArrayJson();
     }
 
 }
