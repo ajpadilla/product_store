@@ -216,4 +216,9 @@ class ProductController extends Controller
         return $this->repository->table();
     }
 
+    public function showApiForCart(Request $request, $id)
+    {
+        $product = $this->repository->get($id);
+    }
+
 }
