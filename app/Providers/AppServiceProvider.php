@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Store\Cart\CartRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $cartRepository = new CartRepository();
+        view()->composer('*', function ($view) use ($cartRepository) {
+            $currentUser = \Auth::user();
+            $currentCartUser = $cartRepository->getActiveCartForUser($currentUser);
+            view()->share('currentCartUser', $currentCartUser);
+        });
     }
 
     /**
