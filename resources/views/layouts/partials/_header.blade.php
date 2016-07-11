@@ -29,7 +29,7 @@
 							<li class="li">
 								<div class="row">
 									<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-										<a href="http://tienda-online.local/en/products/show/73"> 
+										<a href="{{ url('show/product/$product->id') }}"> 
 											<i class="fa fa-check fa-2x"></i> {{ $product->name }}
 										</a>
 									</div>
