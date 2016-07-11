@@ -88,7 +88,7 @@
 			return [
 				'name' => $product->name,
 				'quantity' => $this->cartRepository->getProductQuantityForUser($user, $productId),
-				//'url' => route('products.show', $productId),
+				'url' => route('products.show', $productId),
 				//'url-delete' => route('cart.delete-ajax', $productId)
 			];
 		}
