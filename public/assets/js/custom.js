@@ -194,9 +194,11 @@ var createCartProductToUser = function() {
             type: 'GET',
             url: url,
             dataType: 'json',
-            success: function(response) {
+            success: function(response) 
+            {
                 if (response.success) 
                 {
+                    console.log(response);
                     var cart = jQuery('#products-cart');
                     var product = response.product;
                     var template = jQuery('#cart-tpl').html();
