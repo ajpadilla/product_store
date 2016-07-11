@@ -75,6 +75,10 @@ Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 	Route::get('product/datatables', ['as' => 'api.datatables.product', 
 		'uses' => 'ProductController@dataTable']);
 
+	/*
+		********************************* route for model photo product ********************************
+	*/
+
 	Route::get('create/photo/product/{productId}', ['as' => 'photoProduct.create', 
 		'uses' => 'ProductController@createPhoto'
 	]);
