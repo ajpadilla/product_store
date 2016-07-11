@@ -40,5 +40,12 @@
 			return $quantity;
 		}
 
+		public function changeQuantity(User $user, $productId, $quantity = 0)
+		{
+			$cart = $this->getActiveCartForUser($user);
+			$product = $cart->products()->whereProductId($productId)->first();
+			$product->pivot->quantity = $quantity;
+			return $product->pivot->save();
+		}
 	}
 ?>
