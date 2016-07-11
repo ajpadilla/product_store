@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 
 	Route::get('api/create/cart/user/{productId}/{quantity?}', ['as' => 'cart.store', 'uses' => 'CartController@store']);
 
-	Route::get('show/cart', ['as' => 'cart.show', 'uses' => 'CartController@show']);
+	Route::get('show/cart/{id}', ['as' => 'cart.show', 'uses' => 'CartController@show']);
 
 	/*
 		********************************* route for model products ********************************
