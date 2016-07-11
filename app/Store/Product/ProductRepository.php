@@ -81,5 +81,18 @@
 			return $cart->products()->attach($productId, ['quantity' => $quantity]) == NULL;
 		}
 
+
+		public function getArrayForTopCart(User $user, $productId)
+		{
+			$product = $this->get($productId);
+			$this->cartRepository = new CartRepository();
+			return [
+				'name' => $product->name,
+				'quantity' => $this->cartRepository->getProductQuantityForUser($user, $productId),
+				//'url' => route('products.show', $productId),
+				//'url-delete' => route('cart.delete-ajax', $productId)
+			];
+		}
+
 	}
 ?>
