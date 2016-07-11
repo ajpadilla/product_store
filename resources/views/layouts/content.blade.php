@@ -13,3 +13,5 @@
 	</div>
 </div>
 @endsection
+
+@include('carts.partials._product-cart-tpl')
