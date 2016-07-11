@@ -15,9 +15,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $cartRepository = new CartRepository();
         view()->composer('*', function ($view) use ($cartRepository) {
-            $currentUser = \Auth::user();
-            $currentCartUser = $cartRepository->getActiveCartForUser($currentUser);
-            view()->share('currentCartUser', $currentCartUser);
+            if(\Auth::check()){
+                $currentUser = \Auth::user();
+                $currentCartUser = $cartRepository->getActiveCartForUser($currentUser);
+                view()->share('currentCartUser', $currentCartUser);
+            }
         });
     }
 
