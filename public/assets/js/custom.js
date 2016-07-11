@@ -203,7 +203,6 @@ var createCartProductToUser = function() {
                     var html = Mustache.to_html(template, product);
                     cart.prepend(html);
                     addCountTocart();
-                    
                     bootbox.dialog({
                         message:" ¡Product added to your shopping cart!",
                         title: "Success",
@@ -229,6 +228,12 @@ var createCartProductToUser = function() {
             }
         });
     });
+}
+
+var addCountTocart = function() {
+    var cartCount = parseInt(jQuery('#cart-count').html());
+    if (isNaN(cartCount)) cartCount = 0;
+    jQuery('#cart-count').html(cartCount + 1);
 }
 
 jQuery(document).ready( function() 
