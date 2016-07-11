@@ -19,6 +19,7 @@ Route::get('/dashboard',['middleware' => ['auth','active_user'] ,function () {
     return view('layouts.partials._content');
 }]);
 
+//Middleware for user client
 Route::group(['middleware' => ['auth','active_user'] ],function()
 {	
 	Route::get('/dashboard', function () {
@@ -32,6 +33,8 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 	Route::get('api/create/cart/user/{productId}/{quantity?}', ['as' => 'cart.store', 'uses' => 'CartController@store']);
 });
 
+
+//Middleware for user admin
 Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 
 /*
