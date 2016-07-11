@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 	*/
 
 	Route::get('api/create/cart/user/{productId}/{quantity?}', ['as' => 'cart.store', 'uses' => 'CartController@store']);
+
 });
 
 
