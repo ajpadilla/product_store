@@ -50,7 +50,7 @@
 						<li class="divider"></li>
 						<li>
 							<div class="text-center link-block">
-								<a href="http://tienda-online.local/en/cart/show/4">
+								<a href="{{ url('show/cart', [$currentCartUser->id]) }}">
 									<strong>Más Detalles</strong>
 									<i class="fa fa-angle-right"></i>
 								</a>
