@@ -39,6 +39,11 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 		'uses' => 'CartController@changeQuantity'
 	]);
 
+	Route::get('api/delete-product-cart/{id}', [
+		'as' =>'cart.delete-ajax', 
+		'uses' => 'CartController@deleteAjax', 
+	]);
+
 	/*
 		********************************* route for model products ********************************
 	*/
