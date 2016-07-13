@@ -116,7 +116,7 @@ class CartController extends Controller
     {
         if($request->ajax()) 
         {
-            $this->success($this->repository->changeQuantity(\Auth::user(), $productId, $quantity));
+            $this->setSuccess($this->repository->changeQuantity(\Auth::user(), $productId, $quantity));
             return $this->getResponseArrayJson();
         }
         return $this->getResponseArrayJson();
