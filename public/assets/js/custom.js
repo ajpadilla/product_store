@@ -233,6 +233,20 @@ var createCartProductToUser = function() {
 }
 
 
+var initTouchspin = function() {
+    jQuery(".product-quantity .form-control").TouchSpin({
+        buttondown_class: "btn quantity-down",
+        buttonup_class: "btn quantity-up",
+        min: 0,
+        max: 100,
+        step: 1,
+        decimals: 0,
+        boostat: 5,
+        maxboostedstep: 10
+    });
+    jQuery(".quantity-down").html("<i class='fa fa-angle-down'></i>");
+    jQuery(".quantity-up").html("<i class='fa fa-angle-up'></i>");
+}
 
 
 var addCountTocart = function() {
@@ -249,5 +263,5 @@ jQuery(document).ready( function()
     showProductForm();
     deleteProductItem();
     createCartProductToUser();
-    changeQuantityProduct();
+    initTouchspin();
 });
