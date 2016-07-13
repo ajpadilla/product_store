@@ -244,8 +244,33 @@ var initTouchspin = function() {
         boostat: 5,
         maxboostedstep: 10
     });
+
     jQuery(".quantity-down").html("<i class='fa fa-angle-down'></i>");
     jQuery(".quantity-up").html("<i class='fa fa-angle-up'></i>");
+
+    jQuery('.product-quantity-change').on('touchspin.on.stopspin', function () {
+        $.ajax({
+            type: 'GET',
+            url: jQuery(this).attr('data-url') + '/' + jQuery(this).val(),
+            //data: { 'quantity': jQuery(this).val() },
+            dataType: "JSON",
+            success: function(response) {
+                if(!response.success)
+                {
+                    bootbox.dialog({
+                        message:" There was an error trying to change the amount , try again!",
+                        title: "Danger",
+                        buttons: {
+                            success: {
+                                label: "Danger!",
+                                className: "btn-danger"
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    });
 }
 
 
