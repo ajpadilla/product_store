@@ -55,6 +55,7 @@ class Product extends Model
 		$total = 0;
 		$product = $this->carts()->where('product_id', '=', $this->id)->first();
 		$total = $this->price * $product->pivot->quantity;
+		$total = $this->getNumberFormat($total);
 		return $total;
 	}
 
