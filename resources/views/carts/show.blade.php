@@ -56,7 +56,7 @@
 											                	<strong><span>$</span>{{ $product->total }}</strong>
 											                </td>
 											                <td class="del-goods-col">
-											                	<a class="del-goods delete-from-cart-list" href="http://tienda-online.local/en/cart/api/cart-delete-ajax/73">&nbsp;</a>
+											                	<a class="del-goods delete-from-cart-list" href="{{ route('cart.delete-ajax', $product->id) }}">&nbsp;</a>
 											                </td>
 				                  						</tr>
 				                  						@endforeach
