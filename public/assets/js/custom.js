@@ -274,6 +274,39 @@ var initTouchspin = function() {
 }
 
 
+var removeFromCart = function() {
+    jQuery(document).on('click', '.delete-from-cart', function() {
+        var element = jQuery(this);
+        var url = element.attr('href');
+        jQuery.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            success: function(response) {
+                if (response != null) {
+                    if (response.success) {
+                        element.closest('.li').remove();
+                        discountFromcart();
+                    } else {
+                        bootbox.dialog({
+                            message:" There was an error trying to delete product , try again!",
+                            title: "Danger",
+                            buttons: {
+                                success: {
+                                    label: "Danger!",
+                                    className: "btn-danger"
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
+        return false;
+    });
+}
+
+
 var addCountTocart = function() {
     var cartCount = parseInt(jQuery('#cart-count').html());
     if (isNaN(cartCount)) cartCount = 0;
