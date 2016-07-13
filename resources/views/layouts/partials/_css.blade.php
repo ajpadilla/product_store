@@ -4,3 +4,4 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/custom/styles.css') }}">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {!! Html::style('assets/js/dropzone-4.3.0/dist/dropzone.css') !!}
+{!! Html::style('assets/js/bootstrap-touchspin-master/src/jquery.bootstrap-touchspin.css') !!}
