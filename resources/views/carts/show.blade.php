@@ -46,22 +46,8 @@
 											                </td>
 											                <td class="goods-page-quantity">
 											                	<div class="product-quantity">
-											                          <div class="input-group bootstrap-touchspin input-group-sm">
-												                          <span class="input-group-btn">
-													                          <button data-url="{{ route('cart.change-quantity', $product->id) }}" class="btn quantity-down bootstrap-touchspin-down" type="button">
-													                          	<i class="fa fa-angle-down"></i>
-													                          </button>
-												                          </span>
-												                         
-												                          <input type="text" value="{{ $product->pivot->quantity }}" readonly class="product-quantity-change form-control input-sm">
-
-												                          <span class="input-group-btn">
-												                          	<button class="btn quantity-up bootstrap-touchspin-up" type="button">
-												                          		<i class="fa fa-angle-up"></i>
-												                          	</button>
-												                          </span>
-											                          </div>
-											                      </div>
+		                          									<input data-url="{{ route('cart.change-quantity', $product->id) }}" type="text" value="{{ $product->pivot->quantity }}" readonly class="product-quantity-change form-control input-sm">
+		                      									</div>
 				                    						</td>
 											                <td class="goods-page-price">
 											                	<strong><span>$</span>{{ $product->price }}</strong>
