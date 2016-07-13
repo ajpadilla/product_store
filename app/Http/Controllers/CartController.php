@@ -112,6 +112,14 @@ class CartController extends Controller
         //
     }
 
+    public function deleteAjax($id)
+    {
+        $this->setSuccess($this->productRepository->deleteFromUserCart($id, \Auth::user()));
+        $total = $this->repository->getActiveCartForUser(\Auth::user())->total;
+        $this->addToResponseArray('total', $total);
+        return $this->getResponseArrayJson();
+    }
+
     public function changeQuantity(Request $request, $productId, $quantity)
     {
         if($request->ajax()) 
