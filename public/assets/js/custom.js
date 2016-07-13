@@ -313,6 +313,15 @@ var addCountTocart = function() {
     jQuery('#cart-count').html(cartCount + 1);
 }
 
+
+var discountFromcart = function() {
+    var cartCount = parseInt(jQuery('#cart-count').html());
+    if (isNaN(cartCount)) cartCount = 0;
+    if (cartCount > 0)
+        cartCount--;
+    jQuery('#cart-count').html(cartCount);
+}
+
 jQuery(document).ready( function() 
 {
 	loadCountriesInField();
