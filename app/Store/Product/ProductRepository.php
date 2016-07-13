@@ -93,5 +93,13 @@
 			];
 		}
 
+		public function deleteFromUserCart($productId, User $user)
+		{
+			if ($this->existsInUserCart($productId, $user)){
+				$cart = $this->cartRepository->getActiveCartForUser($user);
+				return $cart->products()->detach($productId) > 0;
+			}
+			return FALSE;
+		}
 	}
 ?>
