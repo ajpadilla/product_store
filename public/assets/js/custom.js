@@ -232,6 +232,9 @@ var createCartProductToUser = function() {
     });
 }
 
+
+
+
 var addCountTocart = function() {
     var cartCount = parseInt(jQuery('#cart-count').html());
     if (isNaN(cartCount)) cartCount = 0;
@@ -246,4 +249,5 @@ jQuery(document).ready( function()
     showProductForm();
     deleteProductItem();
     createCartProductToUser();
+    changeQuantityProduct();
 });
