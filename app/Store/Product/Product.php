@@ -8,6 +8,12 @@ class Product extends Model
 {
 	protected $fillable = ['name', 'description', 'quantity', 'price', 'active', 'mark', 'classification_id', 'user_id'];
 
+
+	public function getNumberFormat($value)
+	{
+		return number_format($value, 2);
+	}
+
 	public function classification()
 	{
 		 return $this->belongsTo('App\Store\Classification\Classification');
