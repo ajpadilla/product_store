@@ -50,7 +50,7 @@
 		                      									</div>
 				                    						</td>
 											                <td class="goods-page-price">
-											                	<strong><span>$</span>{{ $product->price }}</strong>
+											                	<strong><span>$</span>{{ $product->getNumberFormat($product->price) }}</strong>
 											                </td>
 											                <td class="goods-page-total">
 											                	<strong><span>$</span>{{ $product->total }}</strong>
