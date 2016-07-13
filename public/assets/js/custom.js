@@ -322,4 +322,5 @@ jQuery(document).ready( function()
     deleteProductItem();
     createCartProductToUser();
     initTouchspin();
+    removeFromCart();
 });
