@@ -42,7 +42,7 @@
 				</div>-->
 				<hr>
 				<div class="product-price">{{ $product->price }}</div>
-				<div class="product-stock">{{ $product->quantity }}</div>
+				<div class="product-stock">{{ $product->quantity }} In Stock</div>
 				<hr>
 				<div class="btn-group cart">
 					<button type="button" class="add_cart btn btn-success">
