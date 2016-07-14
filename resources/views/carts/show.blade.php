@@ -69,7 +69,7 @@
 						                  <ul>
 						                    <li>
 						                      <em>Sub total</em>
-						                      <strong class="price"><span>$</span><p id="sub-total" style="display: inline-block">123.62</p></strong>
+						                      <strong class="price"><span>$</span><p id="sub-total" style="display: inline-block">{{ $cart->total }}</p></strong>
 						                    </li>
 						                    <li>
 						                      <em>Shipping Cost</em>
