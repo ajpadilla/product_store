@@ -255,9 +255,11 @@ var initTouchspin = function() {
             //data: { 'quantity': jQuery(this).val() },
             dataType: "JSON",
             success: function(response) {
-                if(!response.success)
+                if(response.success)
                 {
-                    bootbox.dialog({
+                   
+                }else{
+                     bootbox.dialog({
                         message:" There was an error trying to change the amount , try again!",
                         title: "Danger",
                         buttons: {
