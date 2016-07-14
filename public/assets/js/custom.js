@@ -304,6 +304,40 @@ var removeFromCart = function() {
         });
         return false;
     });
+
+     jQuery(document).on('click', '.delete-from-cart-list', function() {
+        var element = jQuery(this);
+        var url = element.attr('href');
+        jQuery.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            success: function(response) {
+                if (response != null) {
+                    if (response.success) {
+                        element.closest('tr').remove();
+                        discountFromcart();
+                        jQuery('#sub-total').text(response.total);
+                        //jQuery('#total').text(response.total);
+                    } else {
+                        console.log(response);
+                        bootbox.dialog({
+                            message:" There was an error trying to delete product , try again!",
+                            title: "Danger",
+                            buttons: {
+                                success: {
+                                    label: "Danger!",
+                                    className: "btn-danger"
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
+        return false;
+    });
+
 }
 
 
