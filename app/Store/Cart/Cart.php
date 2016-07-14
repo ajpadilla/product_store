@@ -31,7 +31,7 @@ class Cart extends Model
 		foreach ($this->products as $product) {
 			$total += $product->price * $product->pivot->quantity;
 		}
-		return $total;
+		return number_format($total, 2);
 	}
 
 }
