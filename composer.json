@@ -10,7 +10,8 @@
         "laravelcollective/html": "5.1.*",
         "styde/html": "~1.0",
         "intervention/image": "^2.3",
-        "yajra/laravel-datatables-oracle": "^6.11"
+        "yajra/laravel-datatables-oracle": "^6.11",
+        "paypal/rest-api-sdk-php": "^1.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
