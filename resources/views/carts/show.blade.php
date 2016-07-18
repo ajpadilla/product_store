@@ -5,6 +5,7 @@
 @section('content')
 @if (isset($cart))
 <div class="row">
+	@include('layouts.partials._errors')
 	<div class="col-lg-12">
         <div class="wrapper wrapper-content">
             	<div class="panel-body">
