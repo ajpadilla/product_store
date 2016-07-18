@@ -20,9 +20,22 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use App\Store\Cart\CartRepository;
 
 class PaypalController extends Controller
 {
+    private $_api_context;
+    protected $cartRepository;
+
+    public function __construct(CartRepository $cartRepository)
+    {
+        $this->cartRepository = $cartRepository;
+        // setup PayPal api context
+        $paypal_conf = \Config::get('paypal');
+        $this->_api_context = new ApiContext(new OAuthTokenCredential($paypal_conf['client_id'], $paypal_conf['secret']));
+        $this->_api_context->setConfig($paypal_conf['settings']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -97,5 +110,15 @@ class PaypalController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function postPayment()
+    {
+        $payer = new Payer();
+        $payer->setPaymentMethod('paypal');
+
+        $items = array();
+        $subtotal = 0;
+        $cart = 
     }
 }
