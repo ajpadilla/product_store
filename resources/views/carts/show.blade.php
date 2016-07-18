@@ -6,6 +6,7 @@
 @if (isset($cart))
 <div class="row">
 	@include('layouts.partials._errors')
+	@include('layouts.partials._messages')
 	<div class="col-lg-12">
         <div class="wrapper wrapper-content">
             	<div class="panel-body">
