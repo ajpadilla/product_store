@@ -149,6 +149,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         Yajra\Datatables\DatatablesServiceProvider::class,
+
+        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
     ],
 
     /*
@@ -200,6 +202,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
     ],
 
 ];
