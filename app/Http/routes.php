@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/',['middleware' => [] ,function () {
+Route::get('/',['middleware' => [], 'as' => 'home', function () {
     return view('public.index');
 }]);
 
