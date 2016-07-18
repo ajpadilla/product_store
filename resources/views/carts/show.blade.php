@@ -88,7 +88,7 @@
 						              	<i class="fa fa-shopping-cart"></i>
 						              </button>
 					              	</a>
-		              				<a href="">
+		              				<a href= "{{ route('payment.status') }}">
 		              					<button class="btn btn-primary" type="submit">Pay<i class="fa fa-check"></i>
 		              					</button>
 		              				</a>
