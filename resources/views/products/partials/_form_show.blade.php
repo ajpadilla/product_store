@@ -38,7 +38,7 @@
 							</button>
 						</div>
 						<div class="btn-group wishlist">
-							<button type="button" class="btn btn-danger">
+							<button type="button" class="add_wishlist btn btn-danger">
 								Add to wishlist 
 							</button>
 						</div>
