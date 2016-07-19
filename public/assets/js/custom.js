@@ -341,12 +341,66 @@ var removeFromCart = function() {
 }
 
 
+var addWishlistProductToUser = function() {
+    $(document.body).on("click", "[class^=add_wishlist]", function(event)
+    {
+        var url = jQuery(this).attr('href');
+        console.log(url);
+        jQuery.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            success: function(response) 
+            {
+                if (response.success) 
+                {
+                    console.log(response);
+                    var wishlist = jQuery('#products-wishlist');
+                    var product = response.product;
+                    var template = jQuery('#wishlist-tpl').html();
+                    var html = Mustache.to_html(template, product);
+                    wishlist.prepend(html);
+                    addCountToWishlit();
+                    bootbox.dialog({
+                        message:" ¡Product added to your wishlist!",
+                        title: "Success",
+                        buttons: {
+                            success: {
+                                label: "Success!",
+                                className: "btn-success"
+                            }
+                        }
+                    });
+                }else{
+                    bootbox.dialog({
+                        message:" ¡Could not add the product to the wishlist!",
+                        title: "Danger",
+                        buttons: {
+                            success: {
+                                label: "Danger!",
+                                className: "btn-danger"
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+
+
+
 var addCountTocart = function() {
     var cartCount = parseInt(jQuery('#cart-count').html());
     if (isNaN(cartCount)) cartCount = 0;
     jQuery('#cart-count').html(cartCount + 1);
 }
 
+var addCountToWishlit = function() {
+    var wishlist = parseInt(jQuery('#wishlist-count').html());
+    if (isNaN(wishlist)) wishlist = 0;
+    jQuery('#wishlist-count').html(wishlist + 1);
+}
 
 var discountFromcart = function() {
     var cartCount = parseInt(jQuery('#cart-count').html());
@@ -366,4 +420,5 @@ jQuery(document).ready( function()
     createCartProductToUser();
     initTouchspin();
     removeFromCart();
+    addWishlistProductToUser();
 });
