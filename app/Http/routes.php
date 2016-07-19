@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 
 	Route::get('api/delete-product-wishlist/{id}', [
 		'as' =>'wishlist.delete-ajax', 
-		'uses' => 'WishlistControllers@deleteAjax', 
+		'uses' => 'WishlistController@deleteAjax', 
 	]);
 });
 
