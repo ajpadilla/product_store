@@ -56,17 +56,13 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 	*/
 
 	// Enviamos nuestro pedido a PayPal
-	Route::get('payment', array(
-		'as' => 'payment',
-		'uses' => 'PaypalController@postPayment',
-	));
-	
+	Route::resource('payment', 'PaypalController');
+
 	// Después de realizar el pago Paypal redirecciona a esta ruta
 	Route::get('payment/status', array(
 		'as' => 'payment.status',
 		'uses' => 'PaypalController@getPaymentStatus',
 	));
-
 });
 
 
