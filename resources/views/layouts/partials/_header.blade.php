@@ -65,7 +65,11 @@
 					<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<i class="fa fa-check-square-o fa-lg"></i>
 						<span id="wishlist-count" class="label label-primary">
-							0
+							@if (\Auth::user()->hasProductToWishlist())
+								{{ \Auth::user()->wishlist->count() }}
+							@else
+								0
+							@endif
 						</span>
 					</a>
 					<ul id="products-wishlist" class="dropdown-menu dropdown-alerts">
