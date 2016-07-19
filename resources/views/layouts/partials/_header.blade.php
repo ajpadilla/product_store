@@ -16,7 +16,7 @@
 					<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<i class="fa fa-shopping-cart fa-lg"></i>
 						<span id="cart-count" class="label label-warning">
-						@if (isset($currentCartUser))
+						@if (!empty($currentCartUser))
 							{{ $currentCartUser->products->count() }}
 						@else
 							0
@@ -24,7 +24,7 @@
 						</span>
 					</a>
 					<ul id="products-cart" class="dropdown-menu dropdown-alerts">
-						@if (isset($currentCartUser))
+						@if (!empty($currentCartUser))
 							@foreach ($currentCartUser->products as $product)
 							<li class="li">
 								<div class="row">
@@ -49,6 +49,7 @@
 							@endforeach
 						@endif
 						<li class="divider"></li>
+						@if (!empty($currentCartUser))
 						<li>
 							<div class="text-center link-block">
 								<a href="{{ url('show/cart', [$currentCartUser->id]) }}">
@@ -57,6 +58,7 @@
 								</a>
 							</div>
 						</li>
+						@endif
 					</ul>
 				</li>
 				<li class="dropdown">
