@@ -103,4 +103,14 @@ class WishlistController extends Controller
     {
         //
     }
+
+    public function deleteAjax(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $this->setSuccess($this->productRepository->deleteFromWishlistUser($id, \Auth::user()));
+            return $this->getResponseArrayJson();
+        }   
+        return $this->getResponseArrayJson();
+    }
 }
