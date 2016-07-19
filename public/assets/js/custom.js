@@ -401,7 +401,7 @@ var removeFromWishlist = function() {
                 if (response != null) {
                     if (response.success) {
                         element.closest('.li').remove();
-                        discountFromcart();
+                        discountFromWishlist();
                     } else {
                         bootbox.dialog({
                             message:" There was an error trying to delete product , try again!",
