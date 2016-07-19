@@ -52,7 +52,8 @@ class Product extends Model
 
 	public function wishlists()
 	{
-		return $this->belongsToMany('App\Store\User\User','wishlist', 'product_id' ,'user_id');
+		return $this->belongsToMany('App\Store\User\User','wishlist', 'product_id' ,'user_id')
+		->withTimestamps();
 	}
 
 	public function getTotalAttribute()
