@@ -61,4 +61,9 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsToMany('App\Store\Product\Product','wishlists','user_id','product_id')
         ->withTimestamps();
     }
+
+    public function hasProductToWishlist()
+    {
+        return $this->wishlist->count();
+    }
 }
