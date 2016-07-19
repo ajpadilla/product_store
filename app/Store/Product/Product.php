@@ -50,9 +50,9 @@ class Product extends Model
 			->withPivot('quantity')->withTimestamps();
 	}
 
-	public function wishlists()
+	public function wishlist()
 	{
-		return $this->belongsToMany('App\Store\User\User','wishlist', 'product_id' ,'user_id')
+		return $this->belongsToMany('App\Store\User\User','wishlists', 'product_id' ,'user_id')
 		->withTimestamps();
 	}
 
