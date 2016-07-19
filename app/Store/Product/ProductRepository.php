@@ -63,7 +63,18 @@
 
 		public function addToUserWishlist($productId, User $user)
 		{
-			
+			if($this->existsInWishlist($productId, $user))
+				return FALSE;
+			$product = $this->get($productId);
+			return $product->wishlist()->attach($user->id) == NULL;
+		}
+
+		public function existsInWishlist($productId, User $user)
+		{
+			return $this->getModel()->where('id','=', $productId)->whereHas('wishlist', function($q) use ($user)
+			{
+				$q->where('user_id', '=', $user->id);
+			})->count();
 		}
 
 		public function existsInUserCart($productId, User $user)
