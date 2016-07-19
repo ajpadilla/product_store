@@ -441,6 +441,14 @@ var discountFromcart = function() {
     jQuery('#cart-count').html(cartCount);
 }
 
+var discountFromWishlist = function() {
+    var wishlist = parseInt(jQuery('#wishlist-count').html());
+    if (isNaN(wishlist)) wishlist = 0;
+    if (wishlist > 0)
+        wishlist--;
+    jQuery('#wishlist-count').html(wishlist);
+}
+
 jQuery(document).ready( function() 
 {
 	loadCountriesInField();
