@@ -55,4 +55,10 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Store\Cart\Cart');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Store\Product\Product','wishlist','user_id','product_id')
+        ->withTimestamps();
+    }
 }
