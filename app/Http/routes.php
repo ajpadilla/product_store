@@ -69,6 +69,11 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 	*/
 
 	Route::get('api/create/wishlist/user/{productId}', ['as' => 'wishlist.store', 'uses' => 'WishlistController@store']);
+
+	Route::get('api/delete-product-wishlist/{id}', [
+		'as' =>'wishlist.delete-ajax', 
+		'uses' => 'WishlistControllers@deleteAjax', 
+	]);
 });
 
 
