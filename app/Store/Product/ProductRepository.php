@@ -77,6 +77,16 @@
 			})->count();
 		}
 
+		public function getArrayForTopWishlist($productId)
+		{
+			$product = $this->get($productId);
+			return [
+				'name' => $product->name,
+				'url' => route('products.show', $productId),
+				'url-delete' => route('wishlist.delete-ajax', $productId)
+			];
+		}
+
 		public function existsInUserCart($productId, User $user)
 		{
 			return $this->getModel()->where('id', '=', $productId)->whereHas('carts', function($q) use ($user)
