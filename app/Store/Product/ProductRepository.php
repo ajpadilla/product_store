@@ -83,7 +83,7 @@
 			return [
 				'name' => $product->name,
 				'url' => route('product.show', $productId),
-				//'url-delete' => route('wishlist.delete-ajax', $productId)
+				'url-delete' => route('wishlist.delete-ajax', $productId)
 			];
 		}
 
