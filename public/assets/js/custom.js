@@ -460,4 +460,5 @@ jQuery(document).ready( function()
     initTouchspin();
     removeFromCart();
     addWishlistProductToUser();
+    removeFromWishlist();
 });
