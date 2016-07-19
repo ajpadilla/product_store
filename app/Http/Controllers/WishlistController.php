@@ -46,9 +46,19 @@ class WishlistController extends Controller
      */
     public function store(Request $request, $productId)
     {
-        //
-    }
-
+        if($request->ajax())
+        {
+            if($this->productRepository->addToUserWishlist($productId, \Auth::user()))
+            {
+                $product = $this->productRepository->getArrayForTopWishlist($productId);
+                $this->setSuccess(true);
+                $this->addToResponseArray('product', $product);
+                return $this->getResponseArrayJson();
+            }
+        }
+        return $this->getResponseArrayJson();
+    } 
+    
     /**
      * Display the specified resource.
      *
