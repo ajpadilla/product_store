@@ -40,8 +40,8 @@
 							Add to cart 
 						</button>
 					</div>
-					<div class="btn-group wishlist" href="/api/create/wishlist/user/{{ id }}">
-						<button type="button" class="add_wishlist btn btn-danger">
+					<div class="btn-group wishlist">
+						<button type="button" class="add_wishlist btn btn-danger" href="/api/create/wishlist/user/{{ id }}">
 							Add to wishlist 
 						</button>
 					</div>
