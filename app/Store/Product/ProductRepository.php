@@ -82,7 +82,7 @@
 			$product = $this->get($productId);
 			return [
 				'name' => $product->name,
-				'url' => route('products.show', $productId),
+				'url' => route('product.show', $productId),
 				'url-delete' => route('wishlist.delete-ajax', $productId)
 			];
 		}
