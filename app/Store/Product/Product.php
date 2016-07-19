@@ -50,6 +50,11 @@ class Product extends Model
 			->withPivot('quantity')->withTimestamps();
 	}
 
+	public function wishlists()
+	{
+		return $this->belongsToMany('App\Store\User\User','wishlist', 'product_id' ,'user_id');
+	}
+
 	public function getTotalAttribute()
 	{
 		$total = 0;
