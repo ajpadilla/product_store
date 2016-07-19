@@ -61,6 +61,11 @@
 			return $product;
 		}
 
+		public function addToUserWishlist($productId, User $user)
+		{
+			
+		}
+
 		public function existsInUserCart($productId, User $user)
 		{
 			return $this->getModel()->where('id', '=', $productId)->whereHas('carts', function($q) use ($user)
