@@ -63,6 +63,12 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 		'as' => 'payment.status',
 		'uses' => 'PaypalController@getPaymentStatus',
 	));
+
+	/*
+		********************************* route for model wishlist ********************************
+	*/
+
+	Route::get('api/create/wishlist/user/{productId}', ['as' => 'wishlist.store', 'uses' => 'WishlistController@store']);
 });
 
 
