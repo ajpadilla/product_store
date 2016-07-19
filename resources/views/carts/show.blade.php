@@ -89,9 +89,11 @@
 						              	<i class="fa fa-shopping-cart"></i>
 						              </button>
 					              	</a>
-		              				<a href= "{{ route('payment.status') }}">
-		              					<button class="btn btn-primary" type="submit">Pay<i class="fa fa-check"></i>
+		              				<a href="">
+		              					{!! Form::open(['route' => 'payment.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST']) !!}
+		              						<button class="btn btn-primary" type="submit">Pay<i class="fa fa-check"></i>
 		              					</button>
+		              					{!! Form::close() !!}
 		              				</a>
 		            			</div>
 		        	    	</div>
