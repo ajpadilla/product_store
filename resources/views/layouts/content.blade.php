@@ -15,3 +15,4 @@
 @endsection
 
 @include('carts.partials._product-cart-tpl')
+@include('wishlist.partials._product-wishlist-tpl')
