@@ -83,7 +83,7 @@
 			return [
 				'name' => $product->name,
 				'url' => route('product.show', $productId),
-				'url-delete' => route('wishlist.delete-ajax', $productId)
+				//'url-delete' => route('wishlist.delete-ajax', $productId)
 			];
 		}
 
@@ -115,7 +115,7 @@
 				'name' => $product->name,
 				'quantity' => $this->cartRepository->getProductQuantityForUser($user, $productId),
 				'url' => route('product.show', $productId),
-				//'url-delete' => route('cart.delete-ajax', $productId)
+				'url-delete' => route('cart.delete-ajax', $productId)
 			];
 		}
 
