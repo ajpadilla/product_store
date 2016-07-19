@@ -127,5 +127,15 @@
 			}
 			return FALSE;
 		}
+
+		public function deleteFromWishlistUser($productId, User $user)
+		{
+			if($this->existsInWishlist($productId, $user))
+			{
+				$product = $this->get($productId);
+				return $product->wishlist()->detach($user->id) > 0;
+			}	
+			return FALSE;
+		}
 	}
 ?>
