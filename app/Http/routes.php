@@ -74,6 +74,8 @@ Route::group(['middleware' => ['auth','active_user'] ],function()
 		'as' =>'wishlist.delete-ajax', 
 		'uses' => 'WishlistController@deleteAjax', 
 	]);
+
+	Route::get('show/wishlist/{id}', ['as' => 'wishlist.show', 'uses' => 'WishlistController@show']);
 });
 
 
