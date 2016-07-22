@@ -419,7 +419,7 @@ var removeFromWishlist = function() {
         });
         return false;
     });
-
+}
 
 var addCountTocart = function() {
     var cartCount = parseInt(jQuery('#cart-count').html());
