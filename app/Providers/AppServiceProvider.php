@@ -13,6 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (!\App::environment('local')) {
+            \URL::forceSchema('https');
+        }
+
         $cartRepository = new CartRepository();
         view()->composer('*', function ($view) use ($cartRepository) {
             if(\Auth::check()){
