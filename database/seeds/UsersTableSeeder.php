@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
 	        'post_code' => '5001',
 	        'country_id' => 1,
 	        'phone' => '0416-1342017' ,
-	        'active' => '1',
+	        'active' => 1,
 	        'role' => 'admin',
 	        'email' => 'ajpadilla88@gmail.com',
 	        'password' => bcrypt('123456'),
