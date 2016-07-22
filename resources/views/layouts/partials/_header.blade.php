@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Brand</a>
+			<a class="navbar-brand" href="{{ url('/') }}">Brand</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			@if (\Auth::check())
@@ -87,8 +87,8 @@
 									</div>
 									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<span class="pull-right text-muted small">
-											<a href="{{ route('cart.delete-ajax', $product->id) }}" 
-											class="delete-from-cart">
+											<a href="{{ route('wishlist.delete-ajax', $product->id) }}" 
+											class="delete-from-wishlist">
 												<i class="fa fa-minus-circle fa-2x"></i>
 											</a>
 										</span>
@@ -98,17 +98,19 @@
 							@endforeach
 						@endif
 						<li class="divider"></li>
+						@if (\Auth::user()->hasProductToWishlist())
 						<li>
 							<div class="text-center link-block">
-								<a href="http://tienda-online.local/en/wistlist/api/wistlist">
+								<a href="{{ route('wishlist.show') }}">
 									<strong>Más Detalles</strong>
 									<i class="fa fa-angle-right"></i>
 								</a>
 							</div>
 						</li>
+						@endif
 					</ul>
 				</li>
-				<li><a href="#">Dashboard</a></li>
+				<li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 				<li><a href="#">{{\Auth::user()->username}}</a></li>
