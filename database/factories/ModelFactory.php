@@ -49,3 +49,10 @@ $factory->define(App\Store\Product\Product::class, function (Faker\Generator $fa
        'user_id' => rand(1, 10)
     ];
 });
+
+$factory->define(App\Store\Country\Country::class, function (Faker\Generator $faker) {
+    return [
+       'code' => $faker->countryCode,
+       'name' => $faker->country
+    ];
+});
