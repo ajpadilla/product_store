@@ -11,7 +11,9 @@ class UsersTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        $date = new DateTime;
+
     	\DB::table('users')->insert([
     		'first_name' => 'Alvaro',
 	        'last_name' => 'Padilla',
@@ -25,6 +27,8 @@ class UsersTableSeeder extends Seeder
 	        'email' => 'ajpadilla88@gmail.com',
 	        'password' => bcrypt('123456'),
 	        'remember_token' => str_random(10),
+            'created_at' => $date->format('Y-m-d h:m:s'),
+            'updated_at' => $date->format('Y-m-d h:m:s') 
     	]);
         factory(User::class, 10)->create();
     }
