@@ -65,9 +65,10 @@ class WishlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $wishlist = \Auth::user()->wishlist;
+        return view('wishlist.show', compact('wishlist'));
     }
 
     /**
