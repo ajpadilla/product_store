@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 	        'username' => 'ajpadilla88',
 	        'address' => 'Las Delicias',
 	        'post_code' => '5001',
-	        'country_id' => rand(1, 246),
+	        'country_id' => 1,
 	        'phone' => '0416-1342017' ,
 	        'active' => '1',
 	        'role' => 'admin',
