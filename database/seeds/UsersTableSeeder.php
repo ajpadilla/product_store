@@ -30,6 +30,6 @@ class UsersTableSeeder extends Seeder
             'created_at' => $date->format('Y-m-d h:m:s'),
             'updated_at' => $date->format('Y-m-d h:m:s') 
     	]);
-        factory(User::class, 10)->create();
+        //factory(User::class, 10)->create();
     }
 }
