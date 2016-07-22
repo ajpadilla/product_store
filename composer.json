@@ -17,10 +17,10 @@
         "intervention/image": "^2.3",
         "yajra/laravel-datatables-oracle": "^6.11",
         "anouar/paypalpayment": "^1.1",
-        "shin1x1/laravel-force-https-url-scheme": "^1.1"
+        "shin1x1/laravel-force-https-url-scheme": "^1.1",
+        "fzaninotto/faker": "1.6.x-dev"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
