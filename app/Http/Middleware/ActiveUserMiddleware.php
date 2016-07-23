@@ -21,7 +21,7 @@ class ActiveUserMiddleware
 
     public function handle($request, Closure $next)
     {
-         if($this->auth->check() && $this->auth->user()->active !== 1){
+         if($this->auth->check() && !$this->auth->user()->active){
             $this->auth->logout();
             return redirect('auth/login')->withErrors('sorry, this user account is deactivated');
         }
