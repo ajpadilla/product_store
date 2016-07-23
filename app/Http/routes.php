@@ -194,6 +194,13 @@ Route::get('activate-user/{id}', ['as' => 'activate_user_path', 'uses' => 'UserC
 	]);
 
 /*
+********************************* route for model login facebook ********************************
+*/
+
+Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
+
+/*
 ********************************* route for model countries ********************************
 */
 
