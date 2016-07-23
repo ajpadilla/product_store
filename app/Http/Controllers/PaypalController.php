@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Paypalpayment;
+ use Illuminate\Http\RedirectResponse;
 
 class PaypalController extends Controller
 {
@@ -164,14 +165,14 @@ class PaypalController extends Controller
 
         \Session::put('paypal_payment_id', $payment->getId());
 
-        if(isset($redirect_url)) {
+        /*if(isset($redirect_url)) {
             // redirect to paypal
-            return \Redirect::away($redirect_url);
+            return new RedirectResponse($redirect_url);
         }
         return \Redirect::route('cart.show', ['id' => 9])
-            ->withErrors('Ups! Error desconocido.');
+            ->withErrors('Ups! Error desconocido.');*/
 
-        //dd($payment);
+        dd($payment);
 
     } 
 
