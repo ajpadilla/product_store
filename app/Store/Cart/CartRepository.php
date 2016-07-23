@@ -20,9 +20,11 @@
 		{
 			$cart = $this->model->create($data);
 			$user = \Auth::user();
+			dd($user);
 			$cart->user()->associate($user);
 			$cart->save();
 			return $cart;
+
 		}
 
 		public function getActiveCartForUser(User $user)
