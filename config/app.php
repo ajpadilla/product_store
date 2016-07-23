@@ -149,8 +149,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         Yajra\Datatables\DatatablesServiceProvider::class,
-
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
     ],
 
     /*
@@ -203,6 +204,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
