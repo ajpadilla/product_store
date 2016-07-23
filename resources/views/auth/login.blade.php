@@ -32,7 +32,7 @@
 				{!! Form::close() !!}
 				<hr/>
 				<center><h4>OR</h4></center>
-				{!! Form::submit('Login via facebook',['class' =>'btn btn-lg btn-facebook btn-block']) !!}
+				<a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-facebook btn-block">Login Facebook</a>
 			</div>
 		</div>
 	</div>
