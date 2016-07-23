@@ -1,0 +1,12 @@
+  {
+    "deploy": {
+      "webroot": "/public"
+    },
+    "configuration": {
+         "mbstring.func_overload": 2,
+         "another.setting": "value"
+      },
+      "hooks": {
+         "postDeploy": "ccbuild.sh"
+      }
+  }
