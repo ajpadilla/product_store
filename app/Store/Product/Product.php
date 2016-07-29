@@ -11,7 +11,7 @@ class Product extends Model
 
 	public function getNumberFormat($value)
 	{
-		return number_format($value, 2);
+		return number_format($value, 2, '.', '');
 	}
 
 	public function classification()
