@@ -56,7 +56,7 @@
 											                	<strong><span>$</span>{{ $product->getNumberFormat($product->price) }}</strong>
 											                </td>
 											                <td class="del-goods-col">
-										                       <button href="{{ route('cart.store', $product->id) }}" class="add_cart btn btn-success btn-outline dim" style="margin-left: 20px" type="button" data-toggle="tooltip" data-placement="top" data-original-title="Agregar al carro de compras" title="Agregar al carro de compras">
+										                       <button href="{{ route('cart.store', $product->id) }}" class="btn btn-success btn-outline dim" style="margin-left: 20px" type="button" data-toggle="tooltip" data-placement="top" data-original-title="Agregar al carro de compras" title="Agregar al carro de compras">
 										                       	<i class="fa fa-shopping-cart fa"></i>
 										                       </button>
 										                    </td>
