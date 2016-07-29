@@ -187,9 +187,10 @@ var deleteProductItem = function() {
 }
 
 var createCartProductToUser = function() {
-    $(document.body).on("click", "[class^=add_cart]", function(event)
+    $(document.body).on("click", "[class^=add_cart]", function()
     {
         var url = jQuery(this).attr('href');
+        console.log(url);
         jQuery.ajax({
             type: 'GET',
             url: url,
