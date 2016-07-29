@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Socialite;
+use OAuth;
 
 class FacebookController extends Controller
 {
@@ -19,7 +20,8 @@ class FacebookController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')
+            ->scopes(['email'])->redirect();
     }
 
     /**
