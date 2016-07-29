@@ -7,18 +7,29 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Paypalpayment;
- use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
+use App\Store\Cart\CartRepository;
+
 
 class PaypalController extends Controller
 {
 	private $_apiContext;
+    private $cartRepository;
 
-	function __construct()
+	function __construct(CartRepository $cartRepository)
 	{
 		 $this->_apiContext = Paypalpayment::apiContext(
 		 	config('paypal_payment.Account.ClientId'),
 		 	config('paypal_payment.Account.ClientSecret')
 		 );
+          $this->_apiContext->setConfig(array(
+            'mode' => 'sandbox',
+            'log.LogEnabled' => true,
+            'log.FileName' =>  storage_path() . '/logs/paypal.log',
+            'log.LogLevel' => 'FINE'
+        ));
+
+         $this->cartRepository = $cartRepository;
 	}
 
 
@@ -41,11 +52,12 @@ class PaypalController extends Controller
     */
     public function store()
     {
-         $redirect_url = NULL;
-
-        // ### Address
-        // Base Address object used as shipping or billing
-        // address in a payment. [Optional]
+        $items = array();
+        $subtotal = 0;
+        $total = 0;
+        $cart = $this->cartRepository->getActiveCartForUser(\Auth::user());
+        $currency = 'USD';
+      
         $addr= Paypalpayment::address();
         $addr->setLine1("3909 Witmer Road");
         $addr->setLine2("Niagara Falls");
@@ -55,7 +67,6 @@ class PaypalController extends Controller
         $addr->setCountryCode("US");
         $addr->setPhone("716-298-1822");
 
-        // ### CreditCard
         $card = Paypalpayment::creditCard();
         $card->setType("visa")
             ->setNumber("4758411877817150")
@@ -65,79 +76,46 @@ class PaypalController extends Controller
             ->setFirstName("Joe")
             ->setLastName("Shopper");
 
-        // ### FundingInstrument
-        // A resource representing a Payer's funding instrument.
-        // Use a Payer ID (A unique identifier of the payer generated
-        // and provided by the facilitator. This is required when
-        // creating or using a tokenized funding instrument)
-        // and the `CreditCardDetails`
         $fi = Paypalpayment::fundingInstrument();
         $fi->setCreditCard($card);
 
-        // ### Payer
-        // A resource representing a Payer that funds a payment
-        // Use the List of `FundingInstrument` and the Payment Method
-        // as 'credit_card'
         $payer = Paypalpayment::payer();
         $payer->setPaymentMethod("credit_card")
             ->setFundingInstruments(array($fi));
 
-        $item1 = Paypalpayment::item();
-        $item1->setName('Ground Coffee 40 oz')
-                ->setDescription('Ground Coffee 40 oz')
+        foreach ($cart->products as $product) 
+        {
+            $item = Paypalpayment::item();
+            $item->setName($product->name)
+                ->setDescription($product->description)
                 ->setCurrency('USD')
-                ->setQuantity(1)
-                ->setTax(0.3)
-                ->setPrice(7.50);
+                ->setQuantity($product->pivot->quantity)
+                ->setPrice($product->price);
+            $items[] = $item;
+            $subtotal += $product->price * $product->pivot->quantity;
+        }
 
-        $item2 = Paypalpayment::item();
-        $item2->setName('Granola bars')
-                ->setDescription('Granola Bars with Peanuts')
-                ->setCurrency('USD')
-                ->setQuantity(5)
-                ->setTax(0.2)
-                ->setPrice(2);
-
+        $subtotal = number_format($subtotal, 2, '.', '');
+        $total = ($subtotal + 0);
+        echo $total;
 
         $itemList = Paypalpayment::itemList();
-        $itemList->setItems(array($item1,$item2));
-
+        $itemList->setItems($items);
 
         $details = Paypalpayment::details();
-        $details->setShipping("1.2")
-                ->setTax("1.3")
-                //total of items prices
-                ->setSubtotal("17.5");
+        $details->setShipping(0)
+                ->setSubtotal($subtotal);
 
-        //Payment Amount
         $amount = Paypalpayment::amount();
-        $amount->setCurrency("USD")
-                // the total is $17.8 = (16 + 0.6) * 1 ( of quantity) + 1.2 ( of Shipping).
-                ->setTotal("20")
+        $amount->setCurrency($currency)
+                ->setTotal($total)
                 ->setDetails($details);
-
-        // ### Transaction
-        // A transaction defines the contract of a
-        // payment - what is the payment for and who
-        // is fulfilling it. Transaction is created with
-        // a `Payee` and `Amount` types
 
         $transaction = Paypalpayment::transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
-            ->setDescription("Payment description")
+            ->setDescription("Payment for purchases")
             ->setInvoiceNumber(uniqid());
-
-
-        $baseUrl = \Request::root();
-        $redirectUrls = PaypalPayment::redirectUrls();
-        $redirectUrls->setReturnUrl(url('/payment/status'));
-        $redirectUrls->setCancelUrl(url('/payment/status'));
-
-
-        // ### Payment
-        // A Payment Resource; create one using
-        // the above types and intent as 'sale'
 
         $payment = Paypalpayment::payment();
         $payment->setIntent("sale")
@@ -145,80 +123,24 @@ class PaypalController extends Controller
             ->setTransactions(array($transaction));
 
         try {
-            // ### Create Payment
-            // Create a payment by posting to the APIService
-            // using a valid ApiContext
-            // The return object contains the status;
             $payment->create($this->_apiContext);
         } catch (\PPConnectionException $ex) {
             return  "Exception: " . $ex->getMessage() . PHP_EOL;
             exit(1);
         }
 
-
-        foreach($payment->getLinks() as $link) {
-            if($link->getRel() == 'self') {
-                $redirect_url = $link->getHref();
-                break;
+        if ($payment->state == "approved") 
+        {
+            foreach ($cart->products as $product) 
+            {
+                $quantity = ($product->quantity - $product->pivot->quantity); 
+                $product->quantity = $quantity;
+                $product->save();
             }
+            $cart->active = false;
+            $cart->save();
+            \Alert::message('¡Purchase completed successfully', 'success');
+            return redirect('/');        
         }
-
-        \Session::put('paypal_payment_id', $payment->getId());
-
-        /*if(isset($redirect_url)) {
-            // redirect to paypal
-            return new RedirectResponse($redirect_url);
-        }
-        return \Redirect::route('cart.show', ['id' => 9])
-            ->withErrors('Ups! Error desconocido.');*/
-
-        dd($payment);
-
     } 
-
-
-    public function getPaymentStatus()
-    {
-        // Get the payment ID before session clear
-        $payment_id = \Session::get('paypal_payment_id');
-
-        // clear the session payment ID
-        \Session::forget('paypal_payment_id');
-
-        $payerId = \Input::get('PayerID');
-        $token = \Input::get('token');
-
-        //if (empty(\Input::get('PayerID')) || empty(\Input::get('token'))) {
-        if (empty($payerId) || empty($token)) {
-            return \Redirect::route('home')
-                ->withErrors('Hubo un problema al intentar pagar con Paypal');
-        }
-
-        $payment = Paypalpayment::getById($payment_id, $this->_apiContext);
-
-        // PaymentExecution object includes information necessary 
-        // to execute a PayPal account payment. 
-        // The payer_id is added to the request query parameters
-        // when the user is redirected from paypal back to your site
-        // 
-        $execution = Paypalpayment::PaymentExecution();
-        $execution->setPayerId(\Input::get('PayerID'));
-
-        //Execute the payment
-        $result = $payment->execute($execution, $this->_apiContext);
-        //echo '<pre>';print_r($result);echo '</pre>';exit; // DEBUG RESULT, remove it later
-        if ($result->getState() == 'approved') { // payment made
-            // Registrar el pedido --- ok
-            // Registrar el Detalle del pedido  --- ok
-            // Eliminar carrito 
-            // Enviar correo a user
-            // Enviar correo a admin
-            // Redireccionar
-            return \Redirect::route('home')
-                ->withErrors('Compra realizada de forma correcta');
-        }
-        return \Redirect::route('home')
-            ->withErrors('La compra fue cancelada');
-    }
-
 }
