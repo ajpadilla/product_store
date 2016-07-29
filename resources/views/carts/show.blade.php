@@ -79,7 +79,7 @@
 						                    </li>
 						                    <li class="shopping-total-price">
 						                      <em>Total</em>
-						                      <strong class="price"><span>$</span><p id="total" style="display: inline-block">123.62</p></strong>
+						                      <strong class="price"><span>$</span><p id="total" style="display: inline-block">{{ $cart->getTotalToPay(3) }}</p></strong>
 						                    </li>
 						                  </ul>
 						                </div>
