@@ -31,7 +31,14 @@ class Cart extends Model
 		foreach ($this->products as $product) {
 			$total += $product->price * $product->pivot->quantity;
 		}
-		return number_format($total, 2);
+		return number_format($total, 2,'.', '');
+	}
+
+	public function getTotalToPay($shipoihg_cost)
+	{
+		$subtotal = $this->getTotalAttribute();
+		$total = $subtotal + $shipoihg_cost;
+		return $total;
 	}
 
 }
