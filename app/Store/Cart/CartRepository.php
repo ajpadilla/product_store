@@ -20,7 +20,7 @@
 		{
 			$cart = $this->model->create($data);
 			$user = \Auth::user();
-			dd($user);
+			//dd($user);
 			$cart->user()->associate($user);
 			$cart->save();
 			return $cart;
