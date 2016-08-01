@@ -215,7 +215,11 @@ Route::get('invoice/datatables', ['as' => 'api.datatables.invoice',
 
 Route::get('invoice/list', ['as' => 'invoice.list', 
 		'uses' => 'InvoiceController@index']
-	);
+);
+
+Route::get('invoice/create-pdf/{id}', ['as' => 'invoice.create-pdf', 
+		'uses' => 'InvoiceController@createPdf']
+);
 
 
 Route::get('test', function ()
