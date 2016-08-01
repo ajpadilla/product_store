@@ -84,4 +84,9 @@ class InvoiceController extends Controller
     {
         //
     }
+
+    public function dataTable()
+    {
+        return $this->repository->table();
+    }
 }
