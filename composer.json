@@ -20,7 +20,8 @@
         "shin1x1/laravel-force-https-url-scheme": "^1.1",
         "fzaninotto/faker": "1.6.x-dev",
         "laravel/socialite": "^2.0",
-        "guzzlehttp/guzzle": "~4.0"
+        "guzzlehttp/guzzle": "~4.0",
+        "barryvdh/laravel-dompdf": "^0.6.1"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

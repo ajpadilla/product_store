@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5bbf379e3438b9c6bf46b6706ec961ef",
-    "content-hash": "6152b5047048efa912d67a3d7011dae7",
+    "hash": "815063605027e23100c8cdc12beda0d1",
+    "content-hash": "aa38b332ca6a85707fc6476e8d2e3467",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -49,6 +49,54 @@
             ],
             "description": "laravel-paypalpayment is simple package help you process direct credit card payments, stored credit card payments and PayPal account payments with your L4 projects using paypal REST API SDK.",
             "time": "2015-07-05 13:05:00"
+        },
+        {
+            "name": "barryvdh/laravel-dompdf",
+            "version": "v0.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-dompdf.git",
+                "reference": "b606788108833f7765801dca35455fb23ce9f869"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/b606788108833f7765801dca35455fb23ce9f869",
+                "reference": "b606788108833f7765801dca35455fb23ce9f869",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "0.6.*",
+                "illuminate/support": "5.0.x|5.1.x|5.2.x",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\DomPDF\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A DOMPDF Wrapper for Laravel",
+            "keywords": [
+                "dompdf",
+                "laravel",
+                "pdf"
+            ],
+            "time": "2015-12-21 19:51:22"
         },
         {
             "name": "classpreloader/classpreloader",
