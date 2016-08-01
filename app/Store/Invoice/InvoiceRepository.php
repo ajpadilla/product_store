@@ -13,6 +13,12 @@
 		{
 			$this->setModel(new Invoice);
 		}
+
+		public function create($data= array())
+		{
+			$invoice = $this->model->create($data);
+			return $invoice;
+		}
 	}
 
 ?>
