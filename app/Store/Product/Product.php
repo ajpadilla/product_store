@@ -64,5 +64,4 @@ class Product extends Model
 		$total = $this->getNumberFormat($total);
 		return $total;
 	}
-
 }
