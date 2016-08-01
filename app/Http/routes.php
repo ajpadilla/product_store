@@ -206,6 +206,12 @@ Route::get('auth/facebook/callback', 'FacebookController@handleProviderCallback'
 
 Route::get('api/select/countries', 'CountryController@getAllValues');
 
+/*
+********************************* route for model invoices ********************************
+*/
+
+Route::get('invoice/datatables', ['as' => 'api.datatables.invoice', 
+		'uses' => 'InvoiceController@dataTable']);
 
 
 Route::get('test', function ()
