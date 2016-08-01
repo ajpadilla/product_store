@@ -152,7 +152,7 @@ return [
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 
-        Barryvdh\DomPDF\ServiceProvider::class
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
