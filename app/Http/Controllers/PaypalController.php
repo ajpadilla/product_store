@@ -65,6 +65,8 @@ class PaypalController extends Controller
         $total = 0;
         $cart = $this->cartRepository->getActiveCartForUser(\Auth::user());
         $currency = 'USD';
+        $invoiceData = [];
+        $orderData = [];
       
         $addr= Paypalpayment::address();
         $addr->setLine1("3909 Witmer Road");
@@ -139,11 +141,26 @@ class PaypalController extends Controller
 
         if ($payment->state == "approved") 
         {
+            $invoiceData['date'] = Carbon::now();
+            $invoiceData['client_id'] = \Auth::user()->id;
+            $invoiceData['address'] = \Auth::user()->address;
+            $invoiceData['total'] = $cart->getTotalToPay(3);
+
+            $invoice = $this->invoiceRepository->create($invoiceData);
+
             foreach ($cart->products as $product) 
             {
                 $quantity = ($product->quantity - $product->pivot->quantity); 
                 $product->quantity = $quantity;
                 $product->save();
+
+                $orderData['product_id'] = $product->id;
+                $orderData['quantity'] = $product->pivot->quantity;
+                $orderData['price'] = $product->price;
+                $orderData['amount'] = $product->total;
+                $orderData['invoice_id'] =  $invoice->id;
+
+                $this->orderRepository->create($orderData);
             }
             $cart->active = false;
             $cart->save();
