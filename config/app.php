@@ -152,6 +152,8 @@ return [
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class
+
     ],
 
     /*
@@ -205,6 +207,7 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
