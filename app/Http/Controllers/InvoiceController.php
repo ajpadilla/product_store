@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Store\Invoice\InvoiceRepository;
 
 class InvoiceController extends Controller
 {
+    protected $repository;
+
+    public function __construct(InvoiceRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
