@@ -10,6 +10,7 @@ use Paypalpayment;
 use Illuminate\Http\RedirectResponse;
 use App\Store\Cart\CartRepository;
 use App\Store\Invoice\InvoiceRepository;
+use App\Store\Order\OrderRepository;
 
 
 class PaypalController extends Controller
@@ -17,8 +18,10 @@ class PaypalController extends Controller
 	private $_apiContext;
     private $cartRepository;
     private $invoiceRepository;
+    private $orderRepository;
 
-	function __construct(CartRepository $cartRepository, InvoiceRepository $invoiceRepository)
+	function __construct(CartRepository $cartRepository, InvoiceRepository $invoiceRepository,
+    OrderRepository $orderRepository)
 	{
 		 $this->_apiContext = Paypalpayment::apiContext(
 		 	config('paypal_payment.Account.ClientId'),
@@ -33,6 +36,7 @@ class PaypalController extends Controller
 
          $this->cartRepository = $cartRepository;
          $this->invoiceRepository = $invoiceRepository;
+         $this->orderRepository = $orderRepository;
 	}
 
 
