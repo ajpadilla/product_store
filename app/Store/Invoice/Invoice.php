@@ -13,4 +13,9 @@ class Invoice extends Model
 		return $this->hasMany('App\Store\Order\Order');
 	}
 
+	public function client()
+	{
+		return $this->belongsTo('App\Store\User\User');
+	}
+
 }
