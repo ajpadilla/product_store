@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 	protected $fillable = [];
+
+	public function invoice()
+	{
+		return $this->belongsTo('App\Store\Invoice\Invoice');
+	}
 }
