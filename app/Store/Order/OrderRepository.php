@@ -13,6 +13,13 @@
 		{
 			$this->setModel(new Order);
 		}
+
+		public function create($data= array())
+		{
+			$order = $this->model->create($data);
+			return $order;
+		}
+
 	}
 
 ?>
