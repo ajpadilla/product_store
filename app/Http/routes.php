@@ -213,6 +213,10 @@ Route::get('api/select/countries', 'CountryController@getAllValues');
 Route::get('invoice/datatables', ['as' => 'api.datatables.invoice', 
 		'uses' => 'InvoiceController@dataTable']);
 
+Route::get('invoice/list', ['as' => 'invoice.list', 
+		'uses' => 'InvoiceController@index']
+	);
+
 
 Route::get('test', function ()
 {
