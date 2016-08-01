@@ -12,4 +12,10 @@ class Order extends Model
 	{
 		return $this->belongsTo('App\Store\Invoice\Invoice');
 	}
+
+	public function product()
+	{
+		return $this->belongsTo('App\Store\Product\Product');
+	}
+
 }
