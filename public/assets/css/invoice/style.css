@@ -1,6 +1,7 @@
 @font-face {
   font-family: SourceSansPro;
-  src: url(SourceSansPro-Regular.ttf);
+  /*src: url(SourceSansPro-Regular.ttf);*/
+  src: url("{{ asset('assets/css/invoice/SourceSansPro-Regular.ttf') }}");
 }
 
 .clearfix:after {
@@ -16,7 +17,7 @@ a {
 
 body {
   position: relative;
-  width: 21cm;  
+  width: 19cm;  
   height: 29.7cm; 
   margin: 0 auto; 
   color: #555555;
