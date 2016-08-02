@@ -104,6 +104,6 @@ class InvoiceController extends Controller
         $view = \View::make('invoices.pdf.invoice', compact('invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+        return $pdf->stream();
     }
 }
