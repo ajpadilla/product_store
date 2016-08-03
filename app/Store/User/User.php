@@ -74,7 +74,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function photos()
     {
-        return $this->hasMany('App\Store\Upload\ProductPhoto');
+        return $this->hasMany('App\Store\Upload\UserPhoto');
     }
 
     public function hasPhotos()
