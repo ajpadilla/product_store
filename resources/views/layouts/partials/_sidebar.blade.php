@@ -17,22 +17,28 @@
 				<li class=""><a href="{{ url('user/create') }}">Create</a></li>
 			</ul>
 
-			<li data-toggle="collapse" data-target="#service" class="collapsed">
+			<li data-toggle="collapse" data-target="#classifications" class="collapsed">
 				<a href="#"><i class="fa fa-plus-circle"></i> Classification <span class="arrow"></span></a>
 			</li>  
-			<ul class="sub-menu collapse" id="service">
+			<ul class="sub-menu collapse" id="classifications">
 				<li><a href="{{ url('classification/list') }}">Index</a></li>
 				<li><a href="{{ url('classification/create') }}">Create</a></li>
 			</ul>
 
-			<li data-toggle="collapse" data-target="#new" class="collapsed">
+			<li data-toggle="collapse" data-target="#products" class="collapsed">
 				<a href="#"><i class="fa fa-plus-circle"></i> Product <span class="arrow"></span></a>
 			</li>
-			<ul class="sub-menu collapse" id="new">
+			<ul class="sub-menu collapse" id="products">
 				<li><a href="{{ url('product/list') }}">Index</a></li>
 				<li><a href="{{ url('product/create') }}">Create</a></li>
 			</ul>
 			@endif
+			<li data-toggle="collapse" data-target="#invoices" class="collapsed">
+				<a href="#"><i class="fa fa-plus-circle"></i> Invoices <span class="arrow"></span></a>
+			</li>
+			<ul class="sub-menu collapse" id="invoices">
+				<li><a href="{{ url('invoice/list') }}">Index</a></li>
+			</ul>
 		</ul>
 	</div>
 </div>
