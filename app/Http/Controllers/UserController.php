@@ -9,18 +9,20 @@ use App\Http\Controllers\Controller;
 use App\Store\User\UserRepository;
 use App\Http\Requests\StoreUserRequest;
 use App\Store\Upload\UserPhotoRepository;
+use App\Store\Country\CountryRepository;
 use Mail;
 
 class UserController extends Controller
 {
     protected $repository;
     protected $userPhotoRepository;
+    protected $countryRepository;
 
-
-    public function __construct(UserRepository $repository, UserPhotoRepository $userPhotoRepository)
+    public function __construct(UserRepository $repository, UserPhotoRepository $userPhotoRepository, CountryRepository $countryRepository)
     {
         $this->repository = $repository;
         $this->userPhotoRepository = $userPhotoRepository;
+        $this->countryRepository = $countryRepository;
     }
 
     /**
@@ -93,7 +95,8 @@ class UserController extends Controller
     public function editProfile()
     {
         $user = \Auth::user();
-        return view('users.edit', compact('user'));
+        $countries = $this->countryRepository->getAllForSelect();
+        return view('users.edit', compact('user', 'countries'));
     }
 
 
