@@ -22,54 +22,53 @@
 		@include('layouts.partials._errors')
 		@include('layouts.partials._messages')
 		<h3>Personal info</h3>
-
 		{!! Form::open(['route' => 'user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files' => true, 'accept-charset' => 'UTF-8', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
 			{!! Form::label('first_name', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::text('first_name','', ['class' => 'form-control', 'placeholder' => 'Firs Name']) !!}
+				{!! Form::text('first_name',$user->first_name, ['class' => 'form-control', 'placeholder' => 'Firs Name']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('last_name', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::text('last_name','', ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
+				{!! Form::text('last_name',$user->last_name, ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('email', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::email('email','', ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+				{!! Form::email('email',$user->email, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('username', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::text('username','', ['class' => 'form-control', 'placeholder' => 'User name']) !!}
+				{!! Form::text('username',$user->username, ['class' => 'form-control', 'placeholder' => 'User name']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('address', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!!  Form::textarea('address' , null , ['class' => 'form-control', 'placeholder' => 'Addres']) !!}
+				{!!  Form::textarea('address' , $user->address , ['class' => 'form-control', 'placeholder' => 'Addres']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('post_code', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::text('post_code','', ['class' => 'form-control', 'placeholder' => 'Post Code']) !!}
+				{!! Form::text('post_code',$user->post_code, ['class' => 'form-control', 'placeholder' => 'Post Code']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('phone', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::text('phone','', ['class' => 'form-control', 'placeholder' => 'Phone']) !!}
+				{!! Form::text('phone',$user->phone, ['class' => 'form-control', 'placeholder' => 'Phone']) !!}
 			</div>
 		</div>
 		<div class="form-group">
 			{!! Form::label('country', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
-				{!! Form::select('country_id', [], null, ['class' => 'form-control', 'placeholder' => 'Country', 'id' => 'countries_register']); !!}
+				{!! Form::select('country_id', $countries, $user->country_id, ['class' => 'form-control', 'placeholder' => 'Country', 'id' => '']); !!}
 			</div>
 		</div>
 		<div class="form-group">
