@@ -22,7 +22,7 @@
 		@include('layouts.partials._errors')
 		@include('layouts.partials._messages')
 		<h3>Personal info</h3>
-		{!! Form::open(['route' => 'user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files' => true, 'accept-charset' => 'UTF-8', 'enctype' => 'multipart/form-data']) !!}
+		{!! Form::open(['route' => 'user.update-profile', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'POST', 'files' => true, 'accept-charset' => 'UTF-8', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
 			{!! Form::label('first_name', '', ['class' => 'col-lg-3 control-label']) !!}
 			<div class="col-lg-8">
@@ -78,6 +78,12 @@
 				{!! Form::file('photo','', ['class' => 'form-control', 'placeholder' => 'Photo']) !!}
 			</div>
 		</div>
+		 <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+				{!! Form::submit('Save Changes',['class' =>'btn btn-primary']) !!}
+            </div>
+          </div>
 		{!! Form::close() !!}
 		
 	</div>
