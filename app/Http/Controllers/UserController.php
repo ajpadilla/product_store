@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Store\User\UserRepository;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\EditUserRequest;
 use App\Store\Upload\UserPhotoRepository;
 use App\Store\Country\CountryRepository;
 use Mail;
@@ -109,7 +110,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
+    }
+
+    public function updateProfile(EditUserRequest $request)
+    {
+         $user = \Auth::user();
+         $formData = $request->all();
+         $formData['user_id'] = $user->id;
+         $userUpdate = $this->repository->update($formData);
+        
+         if($request->file('photo'))
+         {
+            if ($user->hasPhotos()) 
+            {
+                $this->userPhotoRepository->remove(
+                    $user->first_photo->complete_path, 
+                    $user->first_photo->complete_thumbnail_path, 
+                    $user->first_photo->id
+                );  
+            }
+            $this->userPhotoRepository->register($request->file('photo'), $user->id);
+         }
+        \Alert::message('¡User updated successfully!', 'success');
+        return redirect('user/edit-profile');
     }
 
     /**
