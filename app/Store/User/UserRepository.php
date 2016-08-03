@@ -23,6 +23,13 @@
 			return $user->active;
 		}
 
+		public function update($data = array())
+		{
+			$user = $this->get($data['user_id']);
+			$user->update($data);
+			return $user;
+		}
+
 	}
 
 ?>
