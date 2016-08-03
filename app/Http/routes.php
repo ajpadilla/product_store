@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 */
 	Route::get('user/create',['as' => 'user.create','uses' => 'UserController@create']);
 	Route::get('user/list',['as' => 'user.list', 'uses' => 'UserController@index']);
-
+	Route::get('user/edit',['as' => 'user.edit', 'uses' => 'UserController@editProfile']);
 /*
 ********************************* route for model products ********************************
 */
