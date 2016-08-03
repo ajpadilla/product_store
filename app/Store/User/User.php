@@ -71,4 +71,25 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->first_name ." ". $this->last_name;
     }
+
+    public function photos()
+    {
+        return $this->hasMany('App\Store\Upload\ProductPhoto');
+    }
+
+    public function hasPhotos()
+    {
+        return $this->photos->count();
+    }
+
+    public function getFirstPhotoAttribute()
+    {
+        if ($this->hasPhotos()) {
+            foreach ($this->photos as $photo) {
+                return $photo;
+            }
+        }
+        return false;
+    }
+
 }
