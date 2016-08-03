@@ -18,7 +18,7 @@ class UserPhotoRepository extends BaseRepository
 
 	public function register(UploadedFile $file, $user_id)
 	{
-		$this->upload = new Upload($file, 74, 103, 'storage/users');
+		$this->upload = new Upload($file, 74, 103, 'storage/users/');
 		$this->upload->process();
 		$data = array('complete_path' => $this->upload->getCompletePublicFilePath(),
 				'complete_thumbnail_path'=> $this->upload->getCompleteThumbnailPublicFilePath(),
@@ -31,7 +31,7 @@ class UserPhotoRepository extends BaseRepository
 			);
 		parent::create($data);
 	}
-	
+
 	public function remove($complete_path, $complete_thumbnail_path, $idPhoto)
 	{
 		if(\File::exists($complete_path) && \File::exists($complete_thumbnail_path))
