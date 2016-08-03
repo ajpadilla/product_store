@@ -111,7 +111,7 @@
 					</ul>
 				</li>
 				<li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-				<li><a href="#">Profile</a></li>
+				<li><a href="{{ url('/user/edit-profile') }}">Profile</a></li>
 				<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 				<li><a href="#">{{\Auth::user()->username}}</a></li>
 			</ul>
