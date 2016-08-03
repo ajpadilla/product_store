@@ -10,7 +10,7 @@
 	<div class="col-md-3">
 		<div class="text-center">
 			@if ($user->hasPhotos())
-				<img src="{{ asset('$user->first_photo->complete_thumbnail_path') }}" class="avatar img-circle" alt="avatar">
+				<img src="{{ asset($user->first_photo->complete_thumbnail_path) }}" class="avatar img-thumbnail" alt="avatar">
 			@else
 				<img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
 			@endif
