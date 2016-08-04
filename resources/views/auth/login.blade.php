@@ -22,17 +22,18 @@
 						<div class="form-group">
 							{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
 						</div>
-						<div class="checkbox">
+						{{--<div class="checkbox">
 							<label>
 								{!! Form::checkbox('remember', 'Remember Me') !!} Remember Me
 							</label>
-						</div>
+						</div>--}}
 						{!! Form::submit('Login',['class' =>'btn btn-lg btn-success btn-block']) !!}
 					</fieldset>
 				{!! Form::close() !!}
 				<hr/>
-				<center><h4>OR</h4></center>
-				<a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-facebook btn-block">Login Facebook</a>
+				{{--<center><h4>OR</h4></center>
+				<a href="{{ url('auth/facebook') }}" class="btn btn-lg btn-facebook btn-block">Login Facebook</a>--}}
+				<a href="{{ url('password/email') }}">Forgot Password</a>
 			</div>
 		</div>
 	</div>
