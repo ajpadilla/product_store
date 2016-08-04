@@ -38,7 +38,7 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     public function setPasswordAttribute($password){
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = \Hash::needsRehash($password) ? \Hash::make($password) : $password;
     }
 
     public function country()
