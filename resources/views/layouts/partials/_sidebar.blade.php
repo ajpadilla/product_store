@@ -14,7 +14,6 @@
 			</li>
 			<ul class="sub-menu collapse" id="users">
 				<li class=""><a href="{{ url('user/list') }}">Index</a></li>
-				<li class=""><a href="{{ url('user/create') }}">Create</a></li>
 			</ul>
 
 			<li data-toggle="collapse" data-target="#classifications" class="collapsed">
