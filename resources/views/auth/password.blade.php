@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
 		@include('layouts.partials._errors')
-		{{-- @include('layouts.partials._messages') --}}
+		@include('layouts.partials._messages')
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Reset Password</h3>
@@ -23,6 +23,7 @@
 					</fieldset>
 				{!! Form::close() !!}
 				<hr/>
+				<a href="{{ url('auth/login') }}">Login</a>
 			</div>
 		</div>
 	</div>
