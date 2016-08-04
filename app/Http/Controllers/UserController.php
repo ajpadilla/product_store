@@ -33,7 +33,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -160,5 +160,10 @@ class UserController extends Controller
             });
         }
         return view('users.email.user-activate', compact('user'));
+    }
+
+    public function dataTable()
+    {
+        return $this->repository->table();
     }
 }
