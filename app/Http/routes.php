@@ -194,8 +194,17 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::post('user/store',['as' => 'user.store', 'uses' => 'UserController@store']);
-Route::get('activate-user/{id}', ['as' => 'activate_user_path', 'uses' => 'UserController@activateUser'
-	]);
+Route::get('activate-user/{id}', ['as' => 'activate_user_path', 
+	'uses' => 'UserController@activateUser'
+]);
+
+// Password reset link request routes...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 /*
 ********************************* route for model login facebook ********************************
