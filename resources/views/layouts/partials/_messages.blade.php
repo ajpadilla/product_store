@@ -4,5 +4,8 @@
         	<!--<h1>Alert</h1>-->
             	{!! Alert::render() !!}
          </div>
+         @if (session('status'))
+   			<p class="alert alert-success">{{ session('status') }}</p>
+		@endif
     </div>
 </div>
