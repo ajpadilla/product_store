@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth','active_user_admin'] ], function(){
 	Route::get('user/edit-profile',['as' => 'user.edit-profile', 'uses' => 'UserController@editProfile']);
 	Route::post('user/update-profile',['as' => 'user.update-profile', 'uses' => 'UserController@updateProfile']);
 	Route::get('user/datatables',['as' => 'api.datatables.users', 'uses' => 'UserController@dataTable']);
+	Route::get('user/list',['as' => 'users.list', 'uses' => 'UserController@index']);
 
 /*
 ********************************* route for model products ********************************
