@@ -92,4 +92,9 @@ class User extends Model implements AuthenticatableContract,
         return false;
     }
 
+    public function getActiveAttribute($value)
+    {
+        return ($value ? 'Yes' : 'No');
+    }
+
 }
